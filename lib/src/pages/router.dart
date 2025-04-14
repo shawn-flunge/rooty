@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rooty/src/pages/auth/login/page.dart';
+import 'package:rooty/src/pages/course/page.dart';
 import 'package:rooty/src/pages/main/courses/page.dart';
 import 'package:rooty/src/pages/main/home/page.dart';
 import 'package:rooty/src/pages/main/main_scaffold.dart';
@@ -45,7 +46,14 @@ final rootyRouter = GoRouter(
             GoRoute(
                 path: RootyRoutes.courses.path,
                 name: RootyRoutes.courses.name,
-                builder: (c, s) => const CoursesPage()
+                builder: (c, s) => const CoursesPage(),
+                routes: [
+                  GoRoute(
+                      path: RootyRoutes.course.path,
+                      name: RootyRoutes.course.name,
+                      builder: (c, s) => const CoursePage()
+                  )
+                ]
             ),
           ]
         ),

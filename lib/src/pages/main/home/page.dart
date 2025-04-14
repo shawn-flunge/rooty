@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:design_system/widget.dart' show RTCalendar;
+import 'package:go_router/go_router.dart';
+import 'package:rooty/src/pages/router.enum.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -89,9 +91,10 @@ class OnGoing extends StatelessWidget {
                     margin: const EdgeInsets.only(right: 16),
                     decoration: BoxDecoration(
                         color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                              color: Colors.black.withAlpha(255),
+                              color: Colors.black.withAlpha(25),
                               spreadRadius: 1,
                               blurRadius: 4
                           )
@@ -112,45 +115,51 @@ class OnGoing extends StatelessWidget {
                 }
 
 
-                return Container(
-                  height: 144,
-                  width: 120,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                  margin: const EdgeInsets.only(right: 16),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withAlpha(255),
-                            spreadRadius: 1,
-                            blurRadius: 4
-                        )
-                      ]
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                          '한국어'
-                      ),
-                      Text(
-                          '6급'
-                      ),
-                      const Spacer(),
-                      // const SizedBox(height: 48,),
-                      Row(
-                        children: [
-                          Text(
-                              '30%'
-                          ),
-                          Container(
-                            width: 50,
-                            height: 10,
-                            color: Colors.black,
+                return GestureDetector(
+                  onTap: () {
+                    context.goNamed(RootyRoutes.course.name);
+                  },
+                  child: Container(
+                    height: 144,
+                    width: 120,
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    margin: const EdgeInsets.only(right: 16),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withAlpha(25),
+                              spreadRadius: 1,
+                              blurRadius: 4
                           )
-                        ],
-                      ),
-                    ],
+                        ]
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            '한국어'
+                        ),
+                        Text(
+                            '6급'
+                        ),
+                        const Spacer(),
+                        // const SizedBox(height: 48,),
+                        Row(
+                          children: [
+                            Text(
+                                '30%'
+                            ),
+                            Container(
+                              width: 50,
+                              height: 10,
+                              color: Colors.black,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 );
               }),
