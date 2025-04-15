@@ -1,0 +1,8 @@
+{
+	"@@locale": "ko",
+	"home_hello": "{name}님\n반가워요!",
+	"@home_hello": {
+		"description": "Home screen greeting message"
+	},
+	"a": "{aa} {bb} {cc}"
+}

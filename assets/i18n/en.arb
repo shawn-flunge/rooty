@@ -1,0 +1,8 @@
+{
+	"@@locale": "en",
+	"home_hello": "hello\n{name}!",
+	"@home_hello": {
+		"description": "Home screen greeting message"
+	},
+	"a": "{aa} {bb} {cc}"
+}
