@@ -53,6 +53,14 @@ final rootyRouter = GoRouter(
                       path: Routes.course.path,
                       name: Routes.course.name,
                       builder: (c, s) => const CoursePage(),
+                      routes: [
+                        GoRoute(
+                            parentNavigatorKey: _rootNavigatorKey,
+                            path: Routes.lesson.path,
+                            name: Routes.lesson.name,
+                            builder: (c, s) => const LessonPage()
+                        )
+                      ]
                   )
                 ]
             ),
@@ -76,6 +84,13 @@ final rootyRouter = GoRouter(
 
 
 class Abc extends GoRoute {
-  Abc({required super.path});
+
+  final Routes route;
+
+  // Abc({required this.route}) : super(path: route.path, name: route.name) {
+  //   path = 'a';
+  // }
+
+  Abc({required this.route}) : super(path: route.path);
 
 }
