@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rooty/src/pages/auth/login/page.dart';
 import 'package:rooty/src/pages/course/page.dart';
+import 'package:rooty/src/pages/lesson/page.dart';
 import 'package:rooty/src/pages/main/courses/page.dart';
 import 'package:rooty/src/pages/main/home/page.dart';
 import 'package:rooty/src/pages/main/main_scaffold.dart';
@@ -15,7 +16,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 
 final rootyRouter = GoRouter(
-  initialLocation: RootyRoutes.home.path,
+  initialLocation: Routes.home.path,
   navigatorKey: _rootNavigatorKey,
   routes: [
 
@@ -27,14 +28,14 @@ final rootyRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-                path: RootyRoutes.home.path,
-                name: RootyRoutes.home.name,
+                path: Routes.home.path,
+                name: Routes.home.name,
                 builder: (c, s) => const HomePage(),
                 routes: [
                   GoRoute(
                     parentNavigatorKey: _rootNavigatorKey,
-                    path: RootyRoutes.login.path,
-                    name: RootyRoutes.login.name,
+                    path: Routes.login.path,
+                    name: Routes.login.name,
                     builder: (c, s) => const LoginPage()
                   )
                 ]
@@ -44,14 +45,14 @@ final rootyRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-                path: RootyRoutes.courses.path,
-                name: RootyRoutes.courses.name,
+                path: Routes.courses.path,
+                name: Routes.courses.name,
                 builder: (c, s) => const CoursesPage(),
                 routes: [
                   GoRoute(
-                      path: RootyRoutes.course.path,
-                      name: RootyRoutes.course.name,
-                      builder: (c, s) => const CoursePage()
+                      path: Routes.course.path,
+                      name: Routes.course.name,
+                      builder: (c, s) => const CoursePage(),
                   )
                 ]
             ),
@@ -60,8 +61,8 @@ final rootyRouter = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-                path: RootyRoutes.setting.path,
-                name: RootyRoutes.setting.name,
+                path: Routes.setting.path,
+                name: Routes.setting.name,
                 builder: (c, s) => const SettingPage()
             ),
           ]
