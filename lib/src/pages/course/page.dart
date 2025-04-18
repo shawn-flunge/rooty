@@ -37,8 +37,13 @@ class _CoursePageState extends State<CoursePage> {
           builder: (c, constraints) {
             return ListView.builder(
                 controller: _controller,
-                itemCount: lessons.length,
+                itemCount: lessons.length + 1,
                 itemBuilder: (c2, i) {
+                  if(i == lessons.length) {
+                    return const SizedBox(
+                      height: 264,
+                    );
+                  }
 
                   final lesson = lessons[i];
                   final d = i % 2 == 0 ? 1 : -1;
@@ -47,8 +52,12 @@ class _CoursePageState extends State<CoursePage> {
                     lesson: lesson.toString(),
                     direction: d,
                     onTap: () async {
+
+                      final double to = (132.0 * (i+1) - constraints.maxHeight/2)
+                          .clamp(0, _controller.position.maxScrollExtent);
+
                       await _controller.animateTo(
-                          132.0 * i - constraints.maxHeight/2 + 132/2,
+                          to,
                           duration: const Duration(milliseconds: 500),
                           curve: Curves.ease
                       );
@@ -106,10 +115,9 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
     _portalController.show();
   }
 
-  void _hide() {
-    _animationController.reverse().then((_) {
-      _portalController.hide();
-    });
+  Future<void> _hide() async{
+    await _animationController.reverse();
+    _portalController.hide();
   }
 
 
@@ -146,14 +154,27 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                   scale: _animationController,
                   alignment: Alignment.topCenter,
                   child: Container(
-                    color: Colors.blueAccent,
+                    color: Colors.grey,
                     width: 200,
                     height: 100,
-                    child: const Center(
-                      child: Text(
-                        'sdafsdf',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
+                    child: Column(
+                      children: [
+                        Text(
+                          'sdafsdf',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () async{
+                            await _hide();
+                            context.goNamed(Routes.lesson.name);
+                          },
+                          child: Text(
+                            'start',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
