@@ -1,38 +1,49 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rooty/src/pages/lesson/providers/lesson.dart';
 
 class LessonPage extends StatelessWidget {
   const LessonPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('lesson'),
-      ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
 
-                    },
-                    child: Text(
-                        'ff'
-                    ),
-                  )
-                ],
-              ),
+    return Consumer(
+        builder: (c, ref, _) {
+          final lesson = ref.watch(lessonByIdProvider('ddd'));
+
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('lesson'),
             ),
-          ),
-          LessonPageBottomSheet()
-        ],
-      ),
+            body: lesson.isLoading
+                ? CircularProgressIndicator()
+                : Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+
+                                },
+                                child: Text(
+                                    'ff'
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      LessonPageBottomSheet()
+                    ],
+                  ),
+          );
+        }
     );
   }
 }
