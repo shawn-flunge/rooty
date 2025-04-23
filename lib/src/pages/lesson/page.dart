@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rooty/src/pages/lesson/providers/lesson.dart';
+import 'package:rooty/src/pages/lesson/widgets/step_scene_view.dart';
 
 class LessonPage extends StatelessWidget {
   const LessonPage({super.key});
@@ -19,29 +20,30 @@ class LessonPage extends StatelessWidget {
               title: Text('lesson'),
             ),
             body: lesson.isLoading
-                ? CircularProgressIndicator()
-                : Stack(
-                    children: [
-                      Positioned.fill(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-
-                                },
-                                child: Text(
-                                    'ff'
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      LessonPageBottomSheet()
-                    ],
-                  ),
+                ? Center(child: CircularProgressIndicator())
+                : StepSceneView(steps: [1,2,3,4],)
+                // : Stack(
+                //     children: [
+                //       Positioned.fill(
+                //         child: Padding(
+                //           padding: const EdgeInsets.symmetric(horizontal: 16),
+                //           child: Column(
+                //             children: [
+                //               GestureDetector(
+                //                 onTap: () {
+                //
+                //                 },
+                //                 child: Text(
+                //                     'ff'
+                //                 ),
+                //               )
+                //             ],
+                //           ),
+                //         ),
+                //       ),
+                //       LessonPageBottomSheet()
+                //     ],
+                //   ),
           );
         }
     );
