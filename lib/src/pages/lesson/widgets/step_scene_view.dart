@@ -42,25 +42,6 @@ class _StepSceneViewState extends State<StepSceneView> {
       curve: Curves.ease
   );
 
-  _offsetCorrection() {
-    final sceneHeight = _controller.position.maxScrollExtent/(widget.steps.length-1);
-    final currentOffset = _controller.offset;
-
-    final divided = currentOffset / sceneHeight;
-
-    int to;
-    final decimal = divided- divided.floor();
-    if(decimal < 0.3) {
-      to = divided.round();
-    } else if(decimal < 0.55) {
-      to = divided.floor();
-    } else {
-      to = divided.round();
-    }
-
-    _animateTo(to * sceneHeight);
-  }
-
 
   @override
   Widget build(BuildContext context) {
