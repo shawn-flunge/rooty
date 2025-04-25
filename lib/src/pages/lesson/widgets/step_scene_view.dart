@@ -64,59 +64,52 @@ class _StepSceneViewState extends State<StepSceneView> {
 
   @override
   Widget build(BuildContext context) {
-    return NotificationListener<ScrollNotification>(
-      onNotification: (notification) {
-        if(notification is ScrollEndNotification) {
-          Future.microtask(_offsetCorrection);
-        }
-        return true;
-      },
-      child: LayoutBuilder(
-        builder: (context, constraints) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
 
-          return ListView.builder(
-            controller: _controller,
-            itemExtent: constraints.maxHeight,
-            itemCount: widget.steps.length,
-            itemBuilder: (context, index) {
+        return ListView.builder(
+          controller: _controller,
+          itemExtent: constraints.maxHeight,
+          itemCount: widget.steps.length,
+          physics: const PageScrollPhysics(),
+          itemBuilder: (context, index) {
 
-              return Container(
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      border: Border.all(
-                          color: Colors.red,
-                          width: 3
-                      )
-                  ),
-                  child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'step $index',
+            return Container(
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    border: Border.all(
+                        color: Colors.red,
+                        width: 3
+                    )
+                ),
+                child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'step $index',
+                          style: TextStyle(
+                              fontSize: 48
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            _goToNextStep(index);
+                          },
+                          child: Text(
+                            'next',
                             style: TextStyle(
-                                fontSize: 48
+                                fontSize: 36
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              _goToNextStep(index);
-                            },
-                            child: Text(
-                              'next',
-                              style: TextStyle(
-                                  fontSize: 36
-                              ),
-                            ),
-                          )
-                        ],
-                      )
-                  )
-              );
-            },
-          );
-        },
-      ),
+                        )
+                      ],
+                    )
+                )
+            );
+          },
+        );
+      },
     );
   }
 
