@@ -1,7 +1,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class StepSceneView extends StatefulWidget {
   final List<dynamic> steps;
@@ -17,7 +16,6 @@ class StepSceneView extends StatefulWidget {
 
 class _StepSceneViewState extends State<StepSceneView> {
 
-  double _preOffset = 0;
   late final ScrollController _controller;
 
   @override
@@ -44,55 +42,81 @@ class _StepSceneViewState extends State<StepSceneView> {
       curve: Curves.ease
   );
 
+  _offsetCorrection() {
+    final sceneHeight = _controller.position.maxScrollExtent/(widget.steps.length-1);
+    final currentOffset = _controller.offset;
+
+    final divided = currentOffset / sceneHeight;
+
+    int to;
+    final decimal = divided- divided.floor();
+    if(decimal < 0.3) {
+      to = divided.round();
+    } else if(decimal < 0.55) {
+      to = divided.floor();
+    } else {
+      to = divided.round();
+    }
+
+    _animateTo(to * sceneHeight);
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
+    return NotificationListener<ScrollNotification>(
+      onNotification: (notification) {
+        if(notification is ScrollEndNotification) {
+          Future.microtask(_offsetCorrection);
+        }
+        return true;
+      },
+      child: LayoutBuilder(
+        builder: (context, constraints) {
 
-        return ListView.builder(
-          controller: _controller,
-          itemExtent: constraints.maxHeight,
-          itemCount: widget.steps.length,
-          itemBuilder: (context, index) {
-            Feedback.forTap(context);
-            Feedback.wrapForTap(null, context);
-            return Container(
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    border: Border.all(
-                        color: Colors.red,
-                        width: 3
-                    )
-                ),
-                child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'step $index',
-                          style: TextStyle(
-                              fontSize: 48
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            _goToNextStep(index);
-                          },
-                          child: Text(
-                            'next',
+          return ListView.builder(
+            controller: _controller,
+            itemExtent: constraints.maxHeight,
+            itemCount: widget.steps.length,
+            itemBuilder: (context, index) {
+
+              return Container(
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      border: Border.all(
+                          color: Colors.red,
+                          width: 3
+                      )
+                  ),
+                  child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'step $index',
                             style: TextStyle(
-                                fontSize: 36
+                                fontSize: 48
                             ),
                           ),
-                        )
-                      ],
-                    )
-                )
-            );
-          },
-        );
-      },
+                          GestureDetector(
+                            onTap: () {
+                              _goToNextStep(index);
+                            },
+                            child: Text(
+                              'next',
+                              style: TextStyle(
+                                  fontSize: 36
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                  )
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
