@@ -26,6 +26,15 @@ class HomePage extends StatelessWidget {
           RTCalendar(),
 
           const SizedBox(height: 24,),
+          /// 누르면 애니메이션??
+          Text(
+            '유저가 입력하는 목표, 동기부여 문구',
+            style: TextStyle(
+              fontSize: 48,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+          const SizedBox(height: 24,),
 
 
 
