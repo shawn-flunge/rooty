@@ -30,9 +30,34 @@ class HomePage extends StatelessWidget {
           Text(
             '유저가 입력하는 목표, 동기부여 문구',
             style: TextStyle(
-              fontSize: 48,
+              fontSize: 40,
               fontWeight: FontWeight.bold
             ),
+          ),
+          const SizedBox(height: 24,),
+
+          Row(
+            children: [
+              Expanded(
+                  child: Container(
+                    height: 100,
+                    color: Colors.grey,
+                    child: Text(
+                      '셀프 체크 영역'
+                    ),
+                  )
+              ),
+              const SizedBox(width: 24,),
+              Expanded(
+                  child: Container(
+                    height: 100,
+                    color: Colors.grey,
+                    child: Text(
+                        '진행률 영역'
+                    ),
+                  )
+              ),
+            ],
           ),
           const SizedBox(height: 24,),
 
