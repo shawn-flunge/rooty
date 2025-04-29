@@ -69,4 +69,9 @@ packages/
 
 localify.yaml
 
+firebase.json
+**/firebase_options.dart
+**/google-services.json
+**/GoogleService-Info.plist
+
 # End of https://www.toptal.com/developers/gitignore/api/flutter
