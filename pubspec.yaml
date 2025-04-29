@@ -35,6 +35,7 @@ dependencies:
   riverpod_annotation: ^2.6.1
   flutter_riverpod: ^2.6.1
   firebase_core: ^3.13.0
+  firebase_data_connect: ^0.1.4+1
 
 dev_dependencies:
   flutter_test:
@@ -46,7 +47,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
-  localify: ^0.0.3
+  localify: ^0.0.2
   build_runner: ^2.4.15
 
 # For information on the generic Dart part of this file, see the
