@@ -12,6 +12,9 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/design_system/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/packages/design_system/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/packages/design_system/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/data_source/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/data_source/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/data_source/build" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

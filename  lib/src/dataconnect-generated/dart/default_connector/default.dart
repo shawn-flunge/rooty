@@ -2,6 +2,8 @@ library default_connector;
 import 'package:firebase_data_connect/firebase_data_connect.dart';
 import 'dart:convert';
 
+part 'root.dart';
+
 
 
 
@@ -9,6 +11,11 @@ import 'dart:convert';
 
 
 class DefaultConnector {
+  
+  
+  RootVariablesBuilder root () {
+    return RootVariablesBuilder(dataConnect, );
+  }
   
 
   static ConnectorConfig connectorConfig = ConnectorConfig(
