@@ -37,6 +37,8 @@ dependencies:
   firebase_core: ^3.13.0
   data_source:
     path: packages/data_source
+  rooty_admin:
+    path: packages/rooty_admin
 
 dev_dependencies:
   flutter_test:

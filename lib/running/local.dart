@@ -13,10 +13,9 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  /// local 개발 시 호출
   dataConnectEmulatorInit();
 
   runApp(
-    ProviderScope(child: RootyApp())
+      ProviderScope(child: RootyApp())
   );
 }
