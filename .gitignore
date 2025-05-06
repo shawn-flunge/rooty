@@ -78,4 +78,7 @@ firebase.json
 .firebase
 dataconnect/.dataconnect/
 *.log
+
+**/supabase_options.dart
+.env/
 # End of https://www.toptal.com/developers/gitignore/api/flutter
