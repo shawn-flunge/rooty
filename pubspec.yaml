@@ -39,6 +39,7 @@ dependencies:
     path: packages/data_source
   rooty_admin:
     path: packages/rooty_admin
+  supabase_flutter: ^2.9.0
 
 dev_dependencies:
   flutter_test:
