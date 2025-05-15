@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rooty/src/pages/auth/login/page.dart';
 import 'package:rooty/src/pages/course/page.dart';
+import 'package:rooty/src/pages/error/page.dart';
 import 'package:rooty/src/pages/lesson/page.dart';
 import 'package:rooty/src/pages/main/courses/page.dart';
 import 'package:rooty/src/pages/main/home/page.dart';
@@ -57,9 +58,21 @@ final rootyRouter = GoRouter(
                       routes: [
                         GoRoute(
                             parentNavigatorKey: _rootNavigatorKey,
-                            path: Routes.lesson.path,
+                            path: '/:lessonId',
                             name: Routes.lesson.name,
-                            builder: (c, s) => const LessonPage()
+                            redirect: (c, s) async {
+                              final lesson = s.pathParameters['lessonId'];
+                              if(lesson == null) return 'error';
+
+                              return null;
+                            },
+                            builder: (c, s) {
+                              final lesson = s.pathParameters['lessonId']!;
+
+                              return LessonPage(
+                                lessonId: lesson,
+                              );
+                            }
                         )
                       ]
                   )

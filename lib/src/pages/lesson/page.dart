@@ -6,7 +6,12 @@ import 'package:rooty/src/pages/lesson/providers/lesson.dart';
 import 'package:rooty/src/pages/lesson/widgets/step_scene_view.dart';
 
 class LessonPage extends StatelessWidget {
-  const LessonPage({super.key});
+  final String lessonId;
+
+  const LessonPage({
+    super.key,
+    required this.lessonId
+  });
 
   @override
   Widget build(BuildContext context) {

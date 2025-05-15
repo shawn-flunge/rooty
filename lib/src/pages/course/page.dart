@@ -167,7 +167,7 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                         GestureDetector(
                           onTap: () async{
                             await _hide();
-                            context.goNamed(Routes.lesson.name);
+                            context.goNamed(Routes.lesson.name, pathParameters: {'lessonId': widget.lesson});
                           },
                           child: Text(
                             'start',
