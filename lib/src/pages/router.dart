@@ -18,6 +18,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final rootyRouter = GoRouter(
   initialLocation: Routes.home.path,
   navigatorKey: _rootNavigatorKey,
+  errorBuilder: (c, s) => const ErrorPage(),
   routes: [
 
     StatefulShellRoute.indexedStack(
