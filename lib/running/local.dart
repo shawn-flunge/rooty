@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:rooty/firebase_options.dart';
 import 'package:rooty/src/app.dart';
+import 'package:rooty/supabase_options.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +14,8 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await SupabaseOptions.initialize();
   dataConnectEmulatorInit();
 
   runApp(

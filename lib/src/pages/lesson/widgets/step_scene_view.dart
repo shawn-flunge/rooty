@@ -1,5 +1,6 @@
 
 
+import 'package:data_source/data_source.dart';
 import 'package:flutter/material.dart';
 
 class StepSceneView extends StatefulWidget {
@@ -71,6 +72,20 @@ class _StepSceneViewState extends State<StepSceneView> {
                           'step $index',
                           style: TextStyle(
                               fontSize: 48
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () async{
+                            // _goToNextStep(index);
+                            final source = EducationDataSource();
+                            // await source.getRootList();
+                            await source.getLessons(1);
+                          },
+                          child: Text(
+                            'get roots',
+                            style: TextStyle(
+                                fontSize: 36
+                            ),
                           ),
                         ),
                         GestureDetector(
