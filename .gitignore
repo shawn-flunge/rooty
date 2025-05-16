@@ -81,4 +81,7 @@ dataconnect/.dataconnect/
 
 **/supabase_options.dart
 .env/
+
+
+**.g.dart
 # End of https://www.toptal.com/developers/gitignore/api/flutter
