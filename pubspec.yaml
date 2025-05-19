@@ -51,6 +51,7 @@ dev_dependencies:
   build_runner: ^2.4.15
   firebase_data_connect: ^0.1.4+1
   freezed: ^3.0.6
+  json_serializable: ^6.9.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
