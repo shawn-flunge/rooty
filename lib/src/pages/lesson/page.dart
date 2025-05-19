@@ -1,9 +1,10 @@
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rooty/src/pages/lesson/providers/lesson.dart';
-import 'package:rooty/src/pages/lesson/widgets/step_scene_view.dart';
+import 'package:rooty/src/pages/lesson/presentation/page/splash.dart';
+import 'package:rooty/src/pages/lesson/presentation/page/step_list.dart';
+import 'package:rooty/src/pages/lesson/presentation/provider/provider.dart';
+
 
 class LessonPage extends StatelessWidget {
   final String lessonId;
@@ -17,39 +18,14 @@ class LessonPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Consumer(
-        builder: (c, ref, _) {
-          final lesson = ref.watch(lessonByIdProvider('ddd'));
+        child: LessonSplash(lessonId: lessonId,),
+        builder: (c, ref, splash) {
+          
+          final state = ref.watch(lessonPageStateNotifierProvider(lessonId));
 
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('lesson'),
-            ),
-            body: lesson.isLoading
-                ? Center(child: CircularProgressIndicator())
-                : StepSceneView(steps: [1,2,3,4],)
-                // : Stack(
-                //     children: [
-                //       Positioned.fill(
-                //         child: Padding(
-                //           padding: const EdgeInsets.symmetric(horizontal: 16),
-                //           child: Column(
-                //             children: [
-                //               GestureDetector(
-                //                 onTap: () {
-                //
-                //                 },
-                //                 child: Text(
-                //                     'ff'
-                //                 ),
-                //               )
-                //             ],
-                //           ),
-                //         ),
-                //       ),
-                //       LessonPageBottomSheet()
-                //     ],
-                //   ),
-          );
+          return (state.isLoading || state.value!.currentStep == -1)
+              ? splash!
+              : LessonStepListPage(steps: state.value!.steps,);
         }
     );
   }
