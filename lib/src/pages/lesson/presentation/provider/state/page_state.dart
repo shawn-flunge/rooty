@@ -17,7 +17,8 @@ abstract class LessonPageState with _$LessonPageState{
   const factory LessonPageState({
     @Default(-1) int currentStep,
     @Default(StepsState.loading) StepsState stepsState,
-    @Default([]) List<StepEntity> steps
+    @Default([]) List<StepEntity> steps,
+    @Default({}) Map<String, dynamic> bundle
   }) = _LessonPageState;
 
 }
