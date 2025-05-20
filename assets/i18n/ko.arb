@@ -4,5 +4,7 @@
 	"@home_hello": {
 		"description": "Home screen greeting message"
 	},
-	"a": "{aa} {bb} {cc}"
+	"next": "다음",
+	"confirm": "확인",
+	"finish": "종료"
 }
