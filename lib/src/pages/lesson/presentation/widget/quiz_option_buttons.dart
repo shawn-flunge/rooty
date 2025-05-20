@@ -2,10 +2,12 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:rooty/src/core/find_value_from_l10n.dart';
 
 class QuizOptionButtons extends StatefulWidget {
 
   final List<dynamic> options;
+  final Map<String, dynamic> bundle;
   final int correctIndex;
   final void Function(bool isPassed) onOptionSelected;
 
@@ -13,6 +15,7 @@ class QuizOptionButtons extends StatefulWidget {
   const QuizOptionButtons({
     super.key,
     required this.options,
+    required this.bundle,
     required this.correctIndex,
     required this.onOptionSelected,
   });
@@ -55,7 +58,7 @@ class _QuizOptionButtonsState extends State<QuizOptionButtons> {
                     : Colors.grey.shade200
             ),
             child: Text(
-              option['text'],
+              widget.bundle.findString(option['text']),
               style: TextStyle(
                   fontSize: 24
               ),

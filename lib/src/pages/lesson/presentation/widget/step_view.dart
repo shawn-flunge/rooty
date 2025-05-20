@@ -1,20 +1,26 @@
 
 
 
+import 'dart:io';
+
 import 'package:design_system/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:rooty/src/core/find_value_from_l10n.dart';
+import 'package:rooty/src/localizations/texts.dart';
 import 'package:rooty/src/pages/lesson/domain/entity/step.dart';
 import 'package:rooty/src/pages/lesson/presentation/widget/quiz_option_buttons.dart';
 
 class StepView extends StatefulWidget {
   final StepContentType type;
   final Map<String, dynamic> content;
+  final Map<String, dynamic> bundle;
   final void Function() onPassedStep;
 
   const StepView({
     super.key,
     required this.type,
     required this.content,
+    required this.bundle,
     required this.onPassedStep
   });
 
@@ -28,6 +34,10 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
 
   @override
   bool get wantKeepAlive => widget.type == StepContentType.quizChoiceSingle;
+
+  String _localizedString(String contentKey) {
+    return widget.bundle.findString(widget.content[contentKey]);
+  }
 
   @override
   void initState() {
@@ -56,16 +66,16 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
 
     return [
       Text(
-        widget.content['title'],
+        _localizedString('title'),
         style: TextStyle(
             fontSize: 44
         ),
       ),
       const SizedBox(height: 12,),
       Text(
-        widget.content['description'],
+        _localizedString('description'),
         style: TextStyle(
-            fontSize: 24
+            fontSize: 14
         ),
       ),
       const SizedBox(height: 24,),
@@ -75,8 +85,8 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
 
         final sound = example['sound'];
         final character = example['character'];
-        final explanation = example['explanation'];
-        final meaning = example['meaning'];
+        final explanation = widget.bundle.findString(example['explanation']);
+        // final meaning = example['meaning'];
 
         return Text(
             '$sound($character) : $explanation'
@@ -90,7 +100,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
 
     return [
       Text(
-        widget.content['question'],
+        _localizedString('question'),
         style: TextStyle(
             fontSize: 44
         ),
@@ -98,9 +108,9 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
       const SizedBox(height: 24,),
       QuizOptionButtons(
         options: widget.content['options'],
+        bundle: widget.bundle,
         correctIndex: widget.content['correct_index'],
         onOptionSelected: (isPassed) {
-          print(isPassed);
           // _selected = selection;
           _canPass.value = isPassed;
         },
@@ -112,7 +122,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
   List<Widget> _summary(BuildContext context) {
     return [
       Text(
-        widget.content['question'],
+        _localizedString('question'),
         style: TextStyle(
             fontSize: 32
         ),
@@ -124,14 +134,14 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
   List<Widget> _default(BuildContext context) {
     return [
       Text(
-        widget.content['title'],
+        _localizedString('title'),
         style: TextStyle(
             fontSize: 44
         ),
       ),
       const SizedBox(height: 24,),
       Text(
-        widget.content['description'],
+        _localizedString('description'),
         style: TextStyle(
             fontSize: 24
         ),
@@ -149,12 +159,12 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            widget.type.name,
-            style: TextStyle(
-                fontSize: 20
-            ),
-          ),
+          // Text(
+          //   widget.type.name,
+          //   style: TextStyle(
+          //       fontSize: 20
+          //   ),
+          // ),
 
           ..._getContentByStepType(context),
 

@@ -25,7 +25,7 @@ class LessonPage extends StatelessWidget {
 
           return (state.isLoading || state.value!.currentStep == -1)
               ? splash!
-              : LessonStepListPage(steps: state.value!.steps,);
+              : LessonStepListPage(steps: state.value!.steps, bundle: state.value!.bundle,);
         }
     );
   }

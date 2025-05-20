@@ -10,10 +10,12 @@ import 'package:rooty/src/pages/lesson/presentation/widget/step_view.dart';
 class LessonStepListPage extends ConsumerStatefulWidget {
 
   final List<StepEntity> steps;
+  final Map<String, dynamic> bundle;
 
   const LessonStepListPage({
     super.key,
-    required this.steps
+    required this.steps,
+    required this.bundle
   });
 
   @override
@@ -80,6 +82,7 @@ class _LessonStepListPageState extends ConsumerState<LessonStepListPage> {
           return StepView(
             type: step.type,
             content: step.content,
+            bundle: widget.bundle,
             onPassedStep: () {
 
               _goToNextStep(index);
