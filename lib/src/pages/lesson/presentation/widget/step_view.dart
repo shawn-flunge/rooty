@@ -35,8 +35,11 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
   @override
   bool get wantKeepAlive => widget.type == StepContentType.quizChoiceSingle;
 
+  Map<String, dynamic> get content => widget.content;
+  Map<String, dynamic> get bundle => widget.bundle;
+
   String _localizedString(String contentKey) {
-    return widget.bundle.findString(widget.content[contentKey]);
+    return bundle.findString(content[contentKey]);
   }
 
   @override
@@ -68,14 +71,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
       Text(
         _localizedString('title'),
         style: TextStyle(
-            fontSize: 44
-        ),
-      ),
-      const SizedBox(height: 12,),
-      Text(
-        _localizedString('description'),
-        style: TextStyle(
-            fontSize: 14
+            fontSize: 40
         ),
       ),
       const SizedBox(height: 24,),
@@ -89,9 +85,15 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
         // final meaning = example['meaning'];
 
         return Text(
-            '$sound($character) : $explanation'
+          '$sound($character) : $explanation',
+          style: TextStyle(
+              fontSize: 18
+          ),
         );
       }),
+
+      const SizedBox(height: 24,),
+      ..._descriptions(),
 
     ];
   }
@@ -136,17 +138,28 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
       Text(
         _localizedString('title'),
         style: TextStyle(
-            fontSize: 44
+            fontSize: 40
         ),
       ),
-      const SizedBox(height: 24,),
-      Text(
-        _localizedString('description'),
-        style: TextStyle(
-            fontSize: 24
-        ),
-      )
+      ..._descriptions()
     ];
+  }
+
+  List<Widget> _descriptions() {
+    return List.generate(content['description'].length, (i) {
+      final key = content['description'][i];
+
+      // print(bundle.findString(key));
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4),
+        child: Text(
+          bundle.findString(key),
+          style: TextStyle(
+              fontSize: 18
+          ),
+        ),
+      );
+    });
   }
 
 
