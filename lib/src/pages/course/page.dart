@@ -8,7 +8,12 @@ import 'package:rooty/src/pages/course/presentation/widget/lesson_button.dart';
 
 
 class CoursePage extends ConsumerStatefulWidget {
-  const CoursePage({super.key});
+  final String courseId;
+
+  const CoursePage({
+    super.key,
+    required this.courseId
+  });
 
   @override
   ConsumerState<CoursePage> createState() => _CoursePageState();
@@ -30,7 +35,7 @@ class _CoursePageState extends ConsumerState<CoursePage> {
   @override
   Widget build(BuildContext context) {
     
-    final state = ref.watch(coursePageStateNotifierProvider('1'));
+    final state = ref.watch(coursePageStateNotifierProvider(widget.courseId));
 
     return Scaffold(
       appBar: AppBar(
@@ -73,7 +78,7 @@ class _CoursePageState extends ConsumerState<CoursePage> {
                       );
                     },
                     onLessonFinished: () {
-                      ref.read(coursePageStateNotifierProvider('1').notifier).finishLesson();
+                      ref.read(coursePageStateNotifierProvider(widget.courseId).notifier).finishLesson();
                     },
                   );
                 }

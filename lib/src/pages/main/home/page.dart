@@ -151,7 +151,8 @@ class OnGoing extends StatelessWidget {
 
                 return GestureDetector(
                   onTap: () {
-                    context.goNamed(Routes.course.name);
+                    /// todo: courseId
+                    context.goNamed(Routes.course.name, pathParameters: {'courseId': '1'});
                   },
                   child: Container(
                     height: 144,

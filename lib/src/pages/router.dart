@@ -52,9 +52,21 @@ final rootyRouter = GoRouter(
                 builder: (c, s) => const CoursesPage(),
                 routes: [
                   GoRoute(
-                      path: Routes.course.path,
+                      path: '/:courseId',
                       name: Routes.course.name,
-                      builder: (c, s) => const CoursePage(),
+                      redirect: (c, s) async {
+                        final course = s.pathParameters['courseId'];
+                        if(course == null) return 'error';
+
+                        return null;
+                      },
+                      builder: (c, s) {
+                        final courseId = s.pathParameters['courseId']!;
+
+                        return CoursePage(
+                          courseId: courseId,
+                        );
+                      },
                       routes: [
                         GoRoute(
                             parentNavigatorKey: _rootNavigatorKey,

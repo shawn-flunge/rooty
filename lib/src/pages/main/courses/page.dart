@@ -22,7 +22,8 @@ class CoursesPage extends StatelessWidget {
 
           GestureDetector(
             onTap: () {
-              context.goNamed(Routes.course.name);
+              /// todo: courseId
+              context.goNamed(Routes.course.name, pathParameters: {'courseId': '1'});
             },
             child: Container(
               padding: const EdgeInsets.all(8),
