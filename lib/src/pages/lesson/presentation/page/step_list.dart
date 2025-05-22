@@ -42,7 +42,7 @@ class _LessonStepListPageState extends ConsumerState<LessonStepListPage> {
       final lessonId = GoRouter.of(context).state.pathParameters['lessonId']!;
 
       ref.read(lessonPageStateNotifierProvider(lessonId).notifier).finishLesson();
-      context.pop();
+      context.pop<bool>(true);
     } else {
 
       if(index == _progress.length-1) {

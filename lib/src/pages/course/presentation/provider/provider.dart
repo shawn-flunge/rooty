@@ -24,4 +24,9 @@ class CoursePageStateNotifier extends _$CoursePageStateNotifier {
     );
   }
 
+
+  void finishLesson() {
+    /// todo
+  }
+
 }
