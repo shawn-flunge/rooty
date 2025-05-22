@@ -1,21 +1,26 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rooty/src/pages/course/domain/entity/lesson.dart';
+import 'package:rooty/src/pages/course/presentation/provider/provider.dart';
 import 'package:rooty/src/pages/router.enum.dart';
 
-class CoursePage extends StatefulWidget {
+
+
+class CoursePage extends ConsumerStatefulWidget {
   const CoursePage({super.key});
 
   @override
-  State<CoursePage> createState() => _CoursePageState();
+  ConsumerState<CoursePage> createState() => _CoursePageState();
 }
 
-class _CoursePageState extends State<CoursePage> {
+class _CoursePageState extends ConsumerState<CoursePage> {
 
 
   late final ScrollController _controller;
-  final lessons = [1,2,3,4,5,6,7,8,9];
+
 
   @override
   void initState() {
@@ -26,15 +31,22 @@ class _CoursePageState extends State<CoursePage> {
 
   @override
   Widget build(BuildContext context) {
+    
+    final state = ref.watch(coursePageStateNotifierProvider('1'));
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Course'
+            'Course'
         ),
       ),
       body: LayoutBuilder(
           builder: (c, constraints) {
+
+            if(state.isLoading) return Center(child: CircularProgressIndicator(),);
+
+            final lessons = state.value!.lessons;
+
             return ListView.builder(
                 controller: _controller,
                 itemCount: lessons.length + 1,
@@ -49,7 +61,7 @@ class _CoursePageState extends State<CoursePage> {
                   final d = i % 2 == 0 ? 1 : -1;
 
                   return LessonButton(
-                    lesson: lesson.toString(),
+                    lesson: lesson,
                     direction: d,
                     onTap: () async {
 
@@ -79,7 +91,7 @@ class _CoursePageState extends State<CoursePage> {
 
 /// height: 16 + 100 + 16
 class LessonButton extends StatefulWidget {
-  final String lesson;
+  final LessonEntity lesson;
   final int direction;
   final VoidCallback? onTap;
 
@@ -160,7 +172,7 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                     child: Column(
                       children: [
                         Text(
-                          'sdafsdf',
+                          widget.lesson.description,
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                         const Spacer(),
@@ -195,7 +207,9 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                   height: 100,
                   color: Colors.red,
                   child: Center(
-                    child: Text(widget.lesson),
+                    child: Text(
+                        widget.lesson.title
+                    ),
                   ),
                 ),
               ),
