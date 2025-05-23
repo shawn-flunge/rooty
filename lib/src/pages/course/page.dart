@@ -55,8 +55,11 @@ class _CoursePageState extends ConsumerState<CoursePage> {
                 itemCount: lessons.length + 1,
                 itemBuilder: (c2, i) {
                   if(i == lessons.length) {
-                    return const SizedBox(
+                    return SizedBox(
                       height: 264,
+                      child: lessons.length == 250
+                        ? null
+                        : Center(child: Text('to be continued'),),
                     );
                   }
 
