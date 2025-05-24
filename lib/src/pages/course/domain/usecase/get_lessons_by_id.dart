@@ -12,6 +12,8 @@ class GetLessonsByCourseId extends UseCase< List<LessonEntity>, int> {
 
   @override
   Future<List<LessonEntity>> call(int param) async{
-    return repository.getLessons(param);
+    final lessons = await repository.getLessons(param);
+    lessons.sort((a, b) => a.order - b.order);
+    return lessons;
   }
 }
