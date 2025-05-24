@@ -6,5 +6,6 @@
 	},
 	"next": "next",
 	"confirm": "confirm",
-	"finish": "finish"
+	"finish": "finish",
+	"start": "start"
 }
