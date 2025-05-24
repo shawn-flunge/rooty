@@ -80,9 +80,10 @@ final rootyRouter = GoRouter(
                             },
                             builder: (c, s) {
                               final lesson = s.pathParameters['lessonId']!;
-
+                              final splash = s.extra as Map<String, dynamic>;
                               return LessonPage(
                                 lessonId: lesson,
+                                splashMeta: splash,
                               );
                             }
                         )

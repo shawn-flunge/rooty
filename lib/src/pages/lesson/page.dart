@@ -8,9 +8,11 @@ import 'package:rooty/src/pages/lesson/presentation/provider/provider.dart';
 
 class LessonPage extends StatelessWidget {
   final String lessonId;
+  final Map<String, dynamic> splashMeta;
 
   const LessonPage({
     super.key,
+    required this.splashMeta,
     required this.lessonId
   });
 
@@ -18,7 +20,7 @@ class LessonPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Consumer(
-        child: LessonSplash(lessonId: lessonId,),
+        child: LessonSplash(lessonId: lessonId, splashData: splashMeta,),
         builder: (c, ref, splash) {
           
           final state = ref.watch(lessonPageStateNotifierProvider(lessonId));

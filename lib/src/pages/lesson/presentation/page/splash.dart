@@ -3,14 +3,16 @@
 import 'package:design_system/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rooty/src/core/find_value_from_l10n.dart';
+import 'package:rooty/src/localizations/texts.dart';
 import 'package:rooty/src/pages/lesson/presentation/provider/provider.dart';
 
 
 class LessonSplash extends ConsumerStatefulWidget {
   final String lessonId;
-  final dynamic splashData;
+  final Map<String, dynamic> splashData;
 
-  const LessonSplash({super.key, required this.lessonId,  this.splashData,});
+  const LessonSplash({super.key, required this.lessonId, required this.splashData,});
 
   @override
   ConsumerState<LessonSplash> createState() => _LessonSplashState();
@@ -26,6 +28,18 @@ class _LessonSplashState extends ConsumerState<LessonSplash> with SingleTickerPr
     super.initState();
   }
 
+  Map<String, dynamic> get meta => widget.splashData;
+  String _localizedString(String key){
+    return meta.findString(key);
+  }
+
+  Widget _padding({required Widget child, double? vertical}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: vertical ?? 0),
+      child: child,
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,25 +48,35 @@ class _LessonSplashState extends ConsumerState<LessonSplash> with SingleTickerPr
       body: Column(
         children: [
           RTAppBarPlain(backgroundColor: Colors.transparent,),
-          Text(
-            'sdfsdf'
-          ),
           const Spacer(),
-          GestureDetector(
-            onTap: () {
-              ref.read(lessonPageStateNotifierProvider(widget.lessonId).notifier).startLesson();
-            },
-            child: Container(
-              color: Colors.red,
-              margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              child: Center(
-                child: Text(
-                  'fff'
+          _padding(
+            child: Text(
+              _localizedString('splash_title'),
+              style: TextStyle(
+                  fontSize: 40
+              ),
+            )
+          ),
+          const SizedBox(height: 32,),
+          _padding(
+              child: Text(
+                _localizedString('splash_description'),
+                style: TextStyle(
+                    fontSize: 20
                 ),
               ),
-            ),
-          )
+          ),
+          const SizedBox(height: 100,),
+          _padding(
+            vertical: 16,
+              child: RTConfirmButton.big(
+                text: RootyTexts.of(context).get('start').text,
+                // backgroundColor: canPass ? Colors.green : Colors.grey,
+                onPressed: () {
+                  ref.read(lessonPageStateNotifierProvider(widget.lessonId).notifier).startLesson();
+                },
+              ),
+          ),
         ],
       ),
     );
