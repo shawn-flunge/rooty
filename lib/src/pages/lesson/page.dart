@@ -19,16 +19,19 @@ class LessonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Consumer(
-        child: LessonSplash(lessonId: lessonId, splashData: splashMeta,),
-        builder: (c, ref, splash) {
-          
-          final state = ref.watch(lessonPageStateNotifierProvider(lessonId));
+    return PopScope(
+      canPop: false,
+      child: Consumer(
+          child: LessonSplash(lessonId: lessonId, splashData: splashMeta,),
+          builder: (c, ref, splash) {
 
-          return (state.isLoading || state.value!.currentStep == -1)
-              ? splash!
-              : LessonStepListPage(steps: state.value!.steps, bundle: state.value!.bundle,);
-        }
+            final state = ref.watch(lessonPageStateNotifierProvider(lessonId));
+
+            return (state.isLoading || state.value!.currentStep == -1)
+                ? splash!
+                : LessonStepListPage(steps: state.value!.steps, bundle: state.value!.bundle,);
+          }
+      ),
     );
   }
 }
