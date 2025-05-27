@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:rooty/src/core/find_value_from_l10n.dart';
 import 'package:rooty/src/localizations/texts.dart';
 import 'package:rooty/src/pages/lesson/domain/entity/step.dart';
+import 'package:rooty/src/pages/lesson/presentation/widget/example_words.dart';
 import 'package:rooty/src/pages/lesson/presentation/widget/quiz_option_buttons.dart';
 
 class StepView extends StatefulWidget {
@@ -76,23 +77,10 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
       ),
       const SizedBox(height: 24,),
 
-      ...List.generate(widget.content['examples'].length, (i) {
-        final example = widget.content['examples'][i];
-
-        final sound = example['sound'];
-        final character = example['character'];
-        final explanation = widget.bundle.findString(example['explanation']);
-        // final meaning = example['meaning'];
-
-        return Text(
-          '$sound($character) : $explanation',
-          style: TextStyle(
-              fontSize: 18
-          ),
-        );
-      }),
-
-      const SizedBox(height: 24,),
+      ExampleWordsView(
+        words: widget.content['examples'],
+        bundle: widget.bundle,
+      ),
       ..._descriptions(),
 
     ];
