@@ -70,7 +70,7 @@ class _LessonSplashState extends ConsumerState<LessonSplash> with SingleTickerPr
           _padding(
             vertical: 16,
               child: RTConfirmButton.big(
-                text: RootyTexts.of(context).get('start').text,
+                text: RootyTexts.of(context).get('start')!.text,
                 // backgroundColor: canPass ? Colors.green : Colors.grey,
                 onPressed: () {
                   ref.read(lessonPageStateNotifierProvider(widget.lessonId).notifier).startLesson();

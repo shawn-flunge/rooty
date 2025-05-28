@@ -26,8 +26,8 @@ class RootyTexts {
     return true;
   }
 
-  TextResource get(String key) {
-    return _resources[key]!;
+  TextResource? get(String key) {
+    return _resources[key];
   }
 }
 
