@@ -49,7 +49,6 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   localify: ^0.0.2
   build_runner: ^2.4.15
-  firebase_data_connect: ^0.1.4+1
   freezed: ^3.0.6
   json_serializable: ^6.9.5
 
