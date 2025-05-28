@@ -87,9 +87,9 @@ flutter:
     - family: NotoSansKR
       fonts:
         - asset: assets/fonts/NotoSansKR-VariableFont_wght.ttf
-    - family: NotoSansTC
-      fonts:
-        - asset: assets/fonts/NotoSansTC-VariableFont_wght.ttf
+#    - family: NotoSansTC
+#      fonts:
+#        - asset: assets/fonts/NotoSansTC-VariableFont_wght.ttf
     - family: NotoSansSC
       fonts:
         - asset: assets/fonts/NotoSansSC-VariableFont_wght.ttf
