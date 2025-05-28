@@ -1,4 +1,5 @@
 
+import 'package:design_system/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:design_system/widget.dart' show RTCalendar;
 import 'package:go_router/go_router.dart';
@@ -10,85 +11,80 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-            child: Text(
-                'Hello\nSomeone!',
-              style: TextStyle(
+    return DefaultLayout(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+          child: Text(
+            'Hello\nSomeone!',
+            style: TextStyle(
                 fontSize: 32
-              ),
             ),
           ),
-          RTCalendar(),
+        ),
+        RTCalendar(),
 
-          const SizedBox(height: 24,),
-          /// 누르면 애니메이션??
-          Text(
-            '유저가 입력하는 목표, 동기부여 문구',
-            style: TextStyle(
+        const SizedBox(height: 24,),
+        /// 누르면 애니메이션??
+        Text(
+          '유저가 입력하는 목표, 동기부여 문구',
+          style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.bold
-            ),
           ),
-          const SizedBox(height: 24,),
+        ),
+        const SizedBox(height: 24,),
 
-          Row(
-            children: [
-              Expanded(
-                  child: Container(
-                    height: 100,
-                    color: Colors.grey,
-                    child: Text(
+        Row(
+          children: [
+            Expanded(
+                child: Container(
+                  height: 100,
+                  color: Colors.grey,
+                  child: Text(
                       '셀프 체크 영역'
-                    ),
-                  )
-              ),
-              const SizedBox(width: 24,),
-              Expanded(
-                  child: Container(
-                    height: 100,
-                    color: Colors.grey,
-                    child: Text(
-                        '진행률 영역'
-                    ),
-                  )
-              ),
-            ],
-          ),
-          const SizedBox(height: 24,),
+                  ),
+                )
+            ),
+            const SizedBox(width: 24,),
+            Expanded(
+                child: Container(
+                  height: 100,
+                  color: Colors.grey,
+                  child: Text(
+                      '진행률 영역'
+                  ),
+                )
+            ),
+          ],
+        ),
+        const SizedBox(height: 24,),
+
+        // Text(
+        //     '이주의 단어'
+        // ),
+        // Container(
+        //   width: double.infinity,
+        //   height: 100,
+        //   color: Colors.grey,
+        // ),
+        // const SizedBox(height: 32,),
 
 
+        OnGoing(),
 
-          // Text(
-          //     '이주의 단어'
-          // ),
-          // Container(
-          //   width: double.infinity,
-          //   height: 100,
-          //   color: Colors.grey,
-          // ),
-          // const SizedBox(height: 32,),
-
-
-          OnGoing(),
-
-          // const SizedBox(height: 32,),
-          // Text(
-          //   '읽고있는 고전'
-          // ),
-          // Container(
-          //   width: double.infinity,
-          //   height: 400,
-          //   color: Colors.grey,
-          // ),
+        // const SizedBox(height: 32,),
+        // Text(
+        //   '읽고있는 고전'
+        // ),
+        // Container(
+        //   width: double.infinity,
+        //   height: 400,
+        //   color: Colors.grey,
+        // ),
 
 
-        ],
-      ),
+      ],
     );
   }
 }
