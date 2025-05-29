@@ -7,5 +7,15 @@
 	"next": "next",
 	"confirm": "confirm",
 	"finish": "finish",
-	"start": "start"
+	"start": "start",
+	"minutes": "{number}min",
+	"@minutes": {
+		"description": "It takes {number} minutes"
+	},
+	"lesson": "LESSON {lesson}",
+	"course_1000": "THOUSAND\nCHARACTERS",
+	"@course_1000": {
+		"description": "The thousand characters"
+	},
+	"course_1000_description": "Korean Voca"
 }

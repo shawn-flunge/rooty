@@ -7,5 +7,15 @@
 	"next": "다음",
 	"confirm": "확인",
 	"finish": "종료",
-	"start": "시작"
+	"start": "시작",
+	"minutes": "{number}분",
+	"@minutes": {
+		"description": "It takes {number} minutes"
+	},
+	"lesson": "LESSON {lesson}",
+	"course_1000": "천자문",
+	"@course_1000": {
+		"description": "The thousand characters"
+	},
+	"course_1000_description": "한국어 어휘"
 }
