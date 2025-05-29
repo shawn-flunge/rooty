@@ -45,7 +45,7 @@ final rootyRouter = GoRouter(
           ]
         ),
 
-        
+
         /// 천자문 하나라서 일단 바로 천자문으로 이동
         // StatefulShellBranch(
         //   routes: [
@@ -111,6 +111,27 @@ final rootyRouter = GoRouter(
                   courseId: courseId,
                 );
               },
+              routes: [
+                GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: '/:lessonId',
+                    name: Routes.lesson.name,
+                    redirect: (c, s) async {
+                      final lesson = s.pathParameters['lessonId'];
+                      if(lesson == null) return 'error';
+
+                      return null;
+                    },
+                    builder: (c, s) {
+                      final lesson = s.pathParameters['lessonId']!;
+                      final splash = s.extra as Map<String, dynamic>;
+                      return LessonPage(
+                        lessonId: lesson,
+                        splashMeta: splash,
+                      );
+                    }
+                )
+              ]
             )
           ]
         ),

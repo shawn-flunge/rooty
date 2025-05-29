@@ -101,7 +101,7 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                             final bool? result = await context.pushNamed<bool>(
                                 Routes.lesson.name,
                                 pathParameters: {
-                                  'courseId': '${widget.lesson.courseId}',
+                                  // 'courseId': '${widget.lesson.courseId}',
                                   'lessonId': '${widget.lesson.id}'
                                 },
                                 extra: widget.lesson.splashMeta
