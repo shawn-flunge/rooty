@@ -8,8 +8,9 @@ class LocalizedText extends StatelessWidget {
 
   final String k;
   final Map<String, String>? args;
+  final TextStyle? style;
 
-  const LocalizedText(this. k,{super.key, this.args});
+  const LocalizedText(this. k,{super.key, this.args, this.style});
 
   RegExp _regExp(String key) => RegExp('\\{$key\\}');
 
@@ -28,9 +29,21 @@ class LocalizedText extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final resource = RootyTexts.of(context).get(k);
+
+    if(resource == null) {
+      return Text(
+        k,
+        semanticsLabel: k,
+        textScaler: TextScaler.noScaling,
+        style: style,
+      );
+    }
+
     return Text(
       _replaceArguments(resource.text),
       semanticsLabel: resource.description,
+      textScaler: TextScaler.noScaling,
+      style: style,
     );
   }
 }
