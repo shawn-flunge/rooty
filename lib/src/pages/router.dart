@@ -44,55 +44,78 @@ final rootyRouter = GoRouter(
             ),
           ]
         ),
+
+        
+        /// 천자문 하나라서 일단 바로 천자문으로 이동
+        // StatefulShellBranch(
+        //   routes: [
+        //     GoRoute(
+        //         path: Routes.courses.path,
+        //         name: Routes.courses.name,
+        //         builder: (c, s) => const CoursesPage(),
+        //         routes: [
+        //           GoRoute(
+        //               path: '/:courseId',
+        //               name: Routes.course.name,
+        //               redirect: (c, s) async {
+        //                 final course = s.pathParameters['courseId'];
+        //                 if(course == null) return 'error';
+        //
+        //                 return null;
+        //               },
+        //               builder: (c, s) {
+        //                 final courseId = s.pathParameters['courseId']!;
+        //
+        //                 return CoursePage(
+        //                   courseId: courseId,
+        //                 );
+        //               },
+        //               routes: [
+        //                 GoRoute(
+        //                     parentNavigatorKey: _rootNavigatorKey,
+        //                     path: '/:lessonId',
+        //                     name: Routes.lesson.name,
+        //                     redirect: (c, s) async {
+        //                       final lesson = s.pathParameters['lessonId'];
+        //                       if(lesson == null) return 'error';
+        //
+        //                       return null;
+        //                     },
+        //                     builder: (c, s) {
+        //                       final lesson = s.pathParameters['lessonId']!;
+        //                       final splash = s.extra as Map<String, dynamic>;
+        //                       return LessonPage(
+        //                         lessonId: lesson,
+        //                         splashMeta: splash,
+        //                       );
+        //                     }
+        //                 )
+        //               ]
+        //           )
+        //         ]
+        //     ),
+        //   ]
+        // ),
+
         StatefulShellBranch(
           routes: [
             GoRoute(
-                path: Routes.courses.path,
-                name: Routes.courses.name,
-                builder: (c, s) => const CoursesPage(),
-                routes: [
-                  GoRoute(
-                      path: '/:courseId',
-                      name: Routes.course.name,
-                      redirect: (c, s) async {
-                        final course = s.pathParameters['courseId'];
-                        if(course == null) return 'error';
+                // parentNavigatorKey: _rootNavigatorKey,
+              path: Routes.courses.path,
+              name: Routes.courses.name,
+              builder: (c, s) {
+                // final courseId = s.pathParameters['courseId']!;
+                final courseId = '1';
 
-                        return null;
-                      },
-                      builder: (c, s) {
-                        final courseId = s.pathParameters['courseId']!;
-
-                        return CoursePage(
-                          courseId: courseId,
-                        );
-                      },
-                      routes: [
-                        GoRoute(
-                            parentNavigatorKey: _rootNavigatorKey,
-                            path: '/:lessonId',
-                            name: Routes.lesson.name,
-                            redirect: (c, s) async {
-                              final lesson = s.pathParameters['lessonId'];
-                              if(lesson == null) return 'error';
-
-                              return null;
-                            },
-                            builder: (c, s) {
-                              final lesson = s.pathParameters['lessonId']!;
-                              final splash = s.extra as Map<String, dynamic>;
-                              return LessonPage(
-                                lessonId: lesson,
-                                splashMeta: splash,
-                              );
-                            }
-                        )
-                      ]
-                  )
-                ]
-            ),
+                return CoursePage(
+                  courseId: courseId,
+                );
+              },
+            )
           ]
         ),
+
+
         StatefulShellBranch(
           routes: [
             GoRoute(
