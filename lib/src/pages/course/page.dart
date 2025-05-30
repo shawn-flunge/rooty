@@ -1,8 +1,11 @@
 
 
+import 'package:design_system/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rooty/src/localizations/texts.dart';
 import 'package:rooty/src/pages/course/presentation/provider/provider.dart';
+import 'package:rooty/src/pages/course/presentation/widget/course_introduction_banner.dart';
 import 'package:rooty/src/pages/course/presentation/widget/lesson_button.dart';
 
 
@@ -32,17 +35,23 @@ class _CoursePageState extends ConsumerState<CoursePage> {
     _controller = ScrollController();
   }
 
+  Future<void> _goTo(int index, BoxConstraints constraints) async{
+    final double to = (132.0 * (index+1) - constraints.maxHeight/2)
+        .clamp(0, _controller.position.maxScrollExtent);
+
+    await _controller.animateTo(
+        to,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.ease
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     
     final state = ref.watch(coursePageStateNotifierProvider(widget.courseId));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-            'Course'
-        ),
-      ),
       body: LayoutBuilder(
           builder: (c, constraints) {
 
@@ -52,34 +61,32 @@ class _CoursePageState extends ConsumerState<CoursePage> {
 
             return ListView.builder(
                 controller: _controller,
-                itemCount: lessons.length + 1,
+                itemCount: lessons.length + 2,
                 itemBuilder: (c2, i) {
-                  if(i == lessons.length) {
+                  if(i == 0) {
+                    return CourseIntroductionBanner(
+                      lessonNumber: 12,
+                      onButtonTapped: () {
+                        _goTo(4, constraints);
+                      },
+                    );
+                  }
+                  if(i == lessons.length+1) {
                     return SizedBox(
                       height: 264,
                       child: lessons.length >= 250
-                        ? null
-                        : Center(child: Text('to be continued'),),
+                          ? null
+                          : Center(child: Text('to be continued'),),
                     );
                   }
 
-                  final lesson = lessons[i];
+                  final lesson = lessons[i-1];
                   final d = i % 2 == 0 ? 1 : -1;
 
                   return LessonButton(
                     lesson: lesson,
                     direction: d,
-                    onTap: () async {
-
-                      final double to = (132.0 * (i+1) - constraints.maxHeight/2)
-                          .clamp(0, _controller.position.maxScrollExtent);
-
-                      await _controller.animateTo(
-                          to,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.ease
-                      );
-                    },
+                    onTap: () async => _goTo(i, constraints),
                     onLessonFinished: () {
                       ref.read(coursePageStateNotifierProvider(widget.courseId).notifier).finishLesson();
                     },
