@@ -27,6 +27,7 @@ class RootyApp extends StatelessWidget {
         Locale('en'),
         Locale('ko'),
       ],
+      debugShowCheckedModeBanner: false,
     );
   }
 }
