@@ -6,6 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:rooty/src/core/usecase.dart';
 import 'package:rooty/src/domains/app_setting/data/repository.dart';
 import 'package:rooty/src/domains/app_setting/domain/usecase/get_theme.dart';
+import 'package:rooty/src/domains/app_setting/domain/usecase/get_version.dart';
 import 'package:rooty/src/domains/app_setting/provider/state.dart';
 
 part 'provider.g.dart';
@@ -13,16 +14,25 @@ part 'provider.g.dart';
 @riverpod
 class AppSettingNotifier extends _$AppSettingNotifier {
 
-
-  @override
-  Future<AppSettingState> build() async{
+  static Future<AppSettingState> initialize() async {
     final repository = AppSettingRepositoryImpl();
     final getTheme = GetTheme( repository );
     final theme = await getTheme(NoParam());
 
+    final getVersion = GetVersion();
+    final version = await getVersion(NoParam());
+
     return AppSettingState(
-      themeMode: theme
+        themeMode: theme,
+        version: version
     );
+  }
+
+  @override
+  Future<AppSettingState> build() async{
+    final setting = await initialize();
+
+    return setting;
   }
 
   setTheme(ThemeMode newTheme) {
