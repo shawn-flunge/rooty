@@ -31,6 +31,13 @@ class AppSettingNotifier extends _$AppSettingNotifier {
           themeMode: newTheme
         )
     );
+    final repository = AppSettingRepositoryImpl();
+    final i = switch(newTheme) {
+      ThemeMode.light => 0,
+      ThemeMode.dark => 1,
+      ThemeMode.system => 2,
+    };
+    repository.setTheme(i);
   }
 
 }
