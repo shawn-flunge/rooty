@@ -5,6 +5,7 @@ enum Routes {
   home('/home', 'home'),
   courses('/courses', 'courses'),
   setting('/setting', 'setting'),
+  themeSetting('/theme', 'themeSetting'),
   login('/login', 'login'),
   course('/course', 'course'),
   lesson('/lesson', 'lesson');

@@ -11,6 +11,7 @@ import 'package:rooty/src/pages/main/courses/page.dart';
 import 'package:rooty/src/pages/main/home/page.dart';
 import 'package:rooty/src/pages/main/main_scaffold.dart';
 import 'package:rooty/src/pages/main/setting/page.dart';
+import 'package:rooty/src/pages/main/setting/page/theme.dart';
 import 'package:rooty/src/pages/router.enum.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -142,7 +143,15 @@ final rootyRouter = GoRouter(
             GoRoute(
                 path: Routes.setting.path,
                 name: Routes.setting.name,
-                builder: (c, s) => const SettingPage()
+                builder: (c, s) => const SettingPage(),
+                routes: [
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: Routes.themeSetting.path,
+                    name: Routes.themeSetting.name,
+                    builder: (c, s) => const ThemeSettingPage()
+                  )
+                ]
             ),
           ]
         ),
