@@ -13,6 +13,10 @@
 		"description": "It takes {number} minutes"
 	},
 	"lesson": "LESSON {lesson}",
+	"theme_setting": "화면 설정",
+	"light_mode": "밝은 모드",
+	"dark_mode": "어두운 모드",
+	"system_mode": "시스템 설정",
 	"course_1000": "천자문",
 	"@course_1000": {
 		"description": "The thousand characters"

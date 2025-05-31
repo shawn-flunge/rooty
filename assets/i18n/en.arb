@@ -13,6 +13,10 @@
 		"description": "It takes {number} minutes"
 	},
 	"lesson": "LESSON {lesson}",
+	"theme_setting": "Appearance",
+	"light_mode": "Light Mode",
+	"dark_mode": "Dark Mode",
+	"system_mode": "System default",
 	"course_1000": "THOUSAND\nCHARACTERS",
 	"@course_1000": {
 		"description": "The thousand characters"
