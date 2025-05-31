@@ -1,0 +1,36 @@
+
+
+
+import 'package:flutter/material.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:rooty/src/core/usecase.dart';
+import 'package:rooty/src/domains/app_setting/data/repository.dart';
+import 'package:rooty/src/domains/app_setting/domain/usecase/get_theme.dart';
+import 'package:rooty/src/domains/app_setting/provider/state.dart';
+
+part 'provider.g.dart';
+
+@riverpod
+class AppSettingNotifier extends _$AppSettingNotifier {
+
+
+  @override
+  Future<AppSettingState> build() async{
+    final repository = AppSettingRepositoryImpl();
+    final getTheme = GetTheme( repository );
+    final theme = await getTheme(NoParam());
+
+    return AppSettingState(
+      themeMode: theme
+    );
+  }
+
+  setTheme(ThemeMode newTheme) {
+    state = AsyncData(
+        AppSettingState(
+          themeMode: newTheme
+        )
+    );
+  }
+
+}
