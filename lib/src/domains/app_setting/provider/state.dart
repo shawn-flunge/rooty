@@ -9,6 +9,7 @@ part 'state.freezed.dart';
 abstract class AppSettingState with _$AppSettingState {
 
   const factory AppSettingState({
-    @Default(ThemeMode.system,) ThemeMode themeMode
+    @Default(ThemeMode.system,) ThemeMode themeMode,
+    @Default('') String version
   }) = _AppSettingState;
 }
