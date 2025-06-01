@@ -19,7 +19,6 @@ class HomePageStateNotifier extends _$HomePageStateNotifier {
 
     final getStreaks = GetStreaks( repository );
     final streaks = await getStreaks(NoParam());
-    print('🖕🏾 ');
     
     final getProgress = GetCurrentProgress(repository);
     final progress = await getProgress(1);
