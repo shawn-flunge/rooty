@@ -10,7 +10,7 @@ abstract class CoursePageState with _$CoursePageState {
 
   const factory CoursePageState({
     @Default([]) List<LessonEntity> lessons,
-    @Default(0) int progress
+    @Default(-1) int progress
   }) = _CoursePageState;
 
 }
