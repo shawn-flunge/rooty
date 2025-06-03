@@ -30,7 +30,7 @@ class HomePage extends ConsumerWidget {
           const SizedBox(height: 24,),
 
           OngoingCourse(
-            currentProgress: state.value!.currentProgress,
+            progress: state.value!.progress,
           ),
 
         ],

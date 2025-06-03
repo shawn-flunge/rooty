@@ -11,7 +11,7 @@ abstract class HomePageState with _$HomePageState{
 
   const factory HomePageState({
     @Default([]) List<DateTime> streaks,
-    @Default(0) int currentProgress
+    @Default(0) int progress
   }) = _HomePageState;
 
 }

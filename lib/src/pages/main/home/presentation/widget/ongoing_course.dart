@@ -10,10 +10,10 @@ import 'package:rooty/src/localizations/widget.dart';
 import 'package:rooty/src/pages/router.enum.dart';
 
 class OngoingCourse extends StatefulWidget {
-  final int currentProgress;
+  final int progress;
   const OngoingCourse({
     super.key,
-    required this.currentProgress
+    required this.progress
   });
 
   @override
@@ -43,7 +43,7 @@ class _OngoingCourseState extends State<OngoingCourse> {
         itemCount: 1,
         itemBuilder: (c, i) {
           return _Card(
-            currentProgress: widget.currentProgress,
+            progress: widget.progress,
           );
         }
       ),
@@ -60,10 +60,10 @@ class _OngoingCourseState extends State<OngoingCourse> {
 
 
 class _Card extends StatelessWidget {
-  final int currentProgress;
+  final int progress;
   const _Card({
     super.key,
-    required this.currentProgress
+    required this.progress
   });
 
   @override
@@ -125,10 +125,10 @@ class _Card extends StatelessWidget {
 
 
 
-          if(currentProgress != 0)
+          if(progress != 0)
             LocalizedText(
               'lesson',
-              args: {'lesson' : '$currentProgress'},
+              args: {'lesson' : '$progress'},
               style: TextStyle(
                 fontSize: 32,
                 color: Colors.white,

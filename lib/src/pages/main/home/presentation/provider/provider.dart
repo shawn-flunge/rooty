@@ -27,7 +27,7 @@ class HomePageStateNotifier extends _$HomePageStateNotifier {
 
     return HomePageState(
       // streaks: streaks,
-      currentProgress: progress
+        progress: progress
     );
   }
 
