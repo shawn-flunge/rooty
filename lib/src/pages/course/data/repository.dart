@@ -8,9 +8,11 @@ import 'package:rooty/src/pages/course/domain/repository/lesson.dart';
 class LessonRepositoryImpl extends LessonRepository {
 
   late final EducationDataSource _source;
+  late final UserLocalDataSource _localSource;
 
   LessonRepositoryImpl() {
     _source = EducationDataSource();
+    _localSource = UserLocalDataSource();
   }
 
   @override
@@ -19,6 +21,12 @@ class LessonRepositoryImpl extends LessonRepository {
     final lessons = await _source.getLessons(courseId);
 
     return lessons.map((e) => LessonEntity.fromJson(e)).toList();
+  }
+
+  @override
+  Future<int> getProgress({required int courseId}) {
+
+    return _localSource.getCurrentProgress(courseId: courseId);
   }
 
 }
