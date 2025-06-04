@@ -3,6 +3,7 @@
 
 import 'package:design_system/color.dart';
 import 'package:design_system/widget.dart';
+import 'package:design_system/shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rooty/src/localizations/texts.dart';
@@ -72,7 +73,19 @@ class _Card extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: const Color(0xFF2D4C7C),
+        color: context.colors.primary2,
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: context.colors.primary.withOpacity(0.4),
+        //     offset: Offset(-2, -8),
+        //     blurRadius: 24
+        //   ),
+        //   BoxShadow(
+        //       color: Colors.black.withOpacity(0.1),
+        //       offset: Offset(2, 8),
+        //       blurRadius: 10
+        //   )
+        // ]
       ),
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,13 +94,14 @@ class _Card extends StatelessWidget {
           LocalizedText(
             'course_1000',
             style: TextStyle(
-                fontSize: Localizations.localeOf(context).languageCode == 'en'
-                    ? 32
-                    : 48,
-                color: Colors.white,
-                fontVariations: [
-                  FontVariation.weight(770)
-                ]
+              fontSize: Localizations.localeOf(context).languageCode == 'en'
+                  ? 32
+                  : 48,
+              color: Colors.white,
+              fontVariations: [
+                FontVariation.weight(770)
+              ],
+              shadows: RTShadow.textShadow
             ),
           ),
 
@@ -104,6 +118,7 @@ class _Card extends StatelessWidget {
                   fontVariations: [
                     FontVariation.weight(600)
                   ],
+                  shadows: RTShadow.textShadow
                 ),
               ),
               const SizedBox(width: 8,),
@@ -115,16 +130,13 @@ class _Card extends StatelessWidget {
                     color: context.colors.lightGrey,
                     fontVariations: [
                       FontVariation.weight(400)
-                    ]
+                    ],
+                    shadows: RTShadow.textShadow
                 ),
               )
             ],
           ),
-
           const Spacer(),
-
-
-
           if(progress != -1)
             LocalizedText(
               'lesson',
@@ -132,15 +144,18 @@ class _Card extends StatelessWidget {
               style: TextStyle(
                 fontSize: 32,
                 color: Colors.white,
+                // color: context.colors.white,
                 fontVariations: [
                   FontVariation.weight(600)
-                ]
+                ],
+                shadows: RTShadow.textShadow
               ),
             ),
           const SizedBox(height: 8,),
           RTConfirmButton.medium(
             text: RootyTexts.of(context).get('start')!.text,
-            textColor: const Color(0xFF2D4C7C),
+            textColor: context.colors.primary2,
+            // backgroundColor: context.colors.white,
             backgroundColor: Colors.white,
             onPressed: () {
               // context.goNamed(Routes.course.name, pathParameters: {'courseId': '1'});
