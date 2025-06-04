@@ -24,13 +24,10 @@ class HomePageStateNotifier extends _$HomePageStateNotifier {
     
     final getProgress = GetCurrentProgress(repository);
     final progress = await getProgress(1);
-    print('🚀 $progress');
-
-
 
     return HomePageState(
-      // streaks: streaks,
-        progress: progress
+      streaks: streaks,
+      progress: progress
     );
   }
 
