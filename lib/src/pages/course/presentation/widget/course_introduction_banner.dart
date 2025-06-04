@@ -1,7 +1,5 @@
 
-
-
-import 'package:design_system/widget.dart';
+import 'package:design_system/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:rooty/src/localizations/widget.dart';
@@ -29,7 +27,7 @@ class CourseIntroductionBanner extends StatelessWidget{
             'course_1000',
             style: TextStyle(
               fontSize: 24,
-              // color: const Color(0xFF2D4C7C),
+              color: context.colors.text,
               fontVariations: [
                 FontVariation.weight(500)
               ]
@@ -40,6 +38,7 @@ class CourseIntroductionBanner extends StatelessWidget{
             '어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고',
             style: TextStyle(
                 fontSize: 16,
+                color: context.colors.text2,
                 fontVariations: [
                   FontVariation.weight(350)
                 ]
@@ -52,14 +51,16 @@ class CourseIntroductionBanner extends StatelessWidget{
               Icon(
                 LucideIcons.book_check,
                 size: 20,
+                color: context.colors.black,
               ),
               const SizedBox(width: 8,),
               LocalizedText(
-                '12 Lessons',
+                '$lessonNumber Lessons',
                 style: TextStyle(
                     fontSize: 16,
+                    color: context.colors.text,
                     fontVariations: [
-                      FontVariation.weight(500)
+                      FontVariation.weight(360)
                     ]
                 ),
               ),
@@ -69,6 +70,7 @@ class CourseIntroductionBanner extends StatelessWidget{
               Icon(
                 LucideIcons.hourglass,
                 size: 20,
+                color: context.colors.black,
               ),
               const SizedBox(width: 8,),
               LocalizedText(
@@ -76,8 +78,9 @@ class CourseIntroductionBanner extends StatelessWidget{
                 args: {'number': '5'},
                 style: TextStyle(
                     fontSize: 16,
+                    color: context.colors.text,
                     fontVariations: [
-                      FontVariation.weight(500)
+                      FontVariation.weight(360)
                     ]
                 ),
               ),

@@ -88,7 +88,7 @@ class _CoursePageState extends ConsumerState<CoursePage> {
 
           return LessonButton(
             lesson: lesson,
-            progress: state.value!.progress,
+            disabled: realIndex > state.value!.progress + 1,
             isDone: realIndex <= state.value!.progress,
             direction: d,
             onTap: () async => _goTo(i),

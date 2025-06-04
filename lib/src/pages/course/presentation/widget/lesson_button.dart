@@ -1,13 +1,18 @@
 
-
+import 'package:design_system/color.dart';
+import 'package:design_system/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rooty/src/localizations/texts.dart';
+import 'package:rooty/src/localizations/widget.dart';
 import 'package:rooty/src/pages/course/domain/entity/lesson.dart';
 import 'package:rooty/src/pages/router.enum.dart';
 
 /// height: 16 + 100 + 16
 class LessonButton extends StatefulWidget {
   final LessonEntity lesson;
+  final bool disabled;
+  final bool isDone;
   final int direction;
   final VoidCallback? onTap;
   final VoidCallback? onLessonFinished;
@@ -15,6 +20,8 @@ class LessonButton extends StatefulWidget {
   const LessonButton({
     super.key,
     required this.lesson,
+    required this.disabled,
+    required this.isDone,
     required this.direction,
     this.onTap,
     this.onLessonFinished
@@ -72,7 +79,7 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                   onTap: () => _toggleOverlay(),
                   behavior: HitTestBehavior.translucent,
                   child: Container(
-                    color: Colors.grey.withAlpha(125),
+                    color: context.colors.dimmed,
                   ),
                 ),
               ),
@@ -84,18 +91,26 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                   scale: _animationController,
                   alignment: Alignment.topCenter,
                   child: Container(
-                    color: Colors.grey,
-                    width: 200,
-                    height: 100,
+                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.symmetric(horizontal: 32),
+                    decoration: BoxDecoration(
+                      color: context.colors.white,
+                      borderRadius: BorderRadius.circular(20)
+                    ),
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
+                        LocalizedText(
                           widget.lesson.description,
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: context.colors.black,
+                          ),
                         ),
-                        const Spacer(),
-                        GestureDetector(
-                          onTap: () async{
+                        const SizedBox(height: 16,),
+                        RTConfirmButton.small(
+                          text: RootyTexts.of(context).get('start')?.text ?? '',
+                          onPressed: () async{
                             await _hide();
 
                             final bool? result = await context.pushNamed<bool>(
@@ -110,10 +125,6 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                               widget.onLessonFinished?.call();
                             }
                           },
-                          child: Text(
-                            'start',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
                         ),
                       ],
                     ),
@@ -130,15 +141,31 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Align(
-                alignment: Alignment(widget.direction * 0.75, 0),
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.red,
-                  child: Center(
-                    child: Text(
-                        widget.lesson.title
+                alignment: Alignment(widget.direction * 0.25, 0),
+                child: RTPushButton(
+                  isPressed: widget.isDone,
+                  disabled: widget.disabled,
+                  onPressed: _toggleOverlay,
+                  child: LocalizedText(
+                    // widget.lesson.title,
+                    '鳥官人皇',
+                    style: TextStyle(
+                      color: widget.disabled ? Colors.grey : Colors.white,
+                      fontSize: 18,
+                      fontVariations: [
+                        FontVariation.weight(500)
+                      ],
+                      shadows: widget.disabled
+                        ? null
+                        : [
+                          Shadow(
+                            color: Color(0x3C000000),
+                            offset: Offset(1, 1),
+                            blurRadius: 4
+                          )
+                        ]
                     ),
+                    // textScaler: TextScaler.noScaling,
                   ),
                 ),
               ),
