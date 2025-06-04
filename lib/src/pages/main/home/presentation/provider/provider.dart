@@ -1,5 +1,7 @@
 
 
+import 'dart:math';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:rooty/src/core/usecase.dart';
 import 'package:rooty/src/pages/main/home/data/repository/repository.dart';
@@ -22,6 +24,7 @@ class HomePageStateNotifier extends _$HomePageStateNotifier {
     
     final getProgress = GetCurrentProgress(repository);
     final progress = await getProgress(1);
+    print('🚀 $progress');
 
 
 
@@ -29,6 +32,21 @@ class HomePageStateNotifier extends _$HomePageStateNotifier {
       // streaks: streaks,
         progress: progress
     );
+  }
+
+  /// lessonId는 1부터 시작
+  /// progress는 0부터 시작
+  void updateProgress(int lessonId) {
+    // final lastLesson = state.value!.progress + 1;
+    final progress = state.value!.progress + 1;
+
+    if(lessonId <= progress) {
+      return;
+    } else {
+      state = AsyncData(
+          state.value!.copyWith(progress: max(state.value!.progress, progress))
+      );
+    }
   }
 
 }

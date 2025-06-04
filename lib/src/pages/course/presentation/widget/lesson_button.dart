@@ -15,7 +15,7 @@ class LessonButton extends StatefulWidget {
   final bool isDone;
   final int direction;
   final VoidCallback? onTap;
-  final VoidCallback? onLessonFinished;
+  // final VoidCallback? onLessonFinished;
 
   const LessonButton({
     super.key,
@@ -24,7 +24,7 @@ class LessonButton extends StatefulWidget {
     required this.isDone,
     required this.direction,
     this.onTap,
-    this.onLessonFinished
+    // this.onLessonFinished
   });
 
   @override
@@ -121,9 +121,6 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                                 },
                                 extra: widget.lesson.splashMeta
                             );
-                            if(result == true) {
-                              widget.onLessonFinished?.call();
-                            }
                           },
                         ),
                       ],

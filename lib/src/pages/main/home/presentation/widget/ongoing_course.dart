@@ -128,7 +128,7 @@ class _Card extends StatelessWidget {
           if(progress != -1)
             LocalizedText(
               'lesson',
-              args: {'lesson' : '${progress+1}'},
+              args: {'lesson' : '${progress+2}'},
               style: TextStyle(
                 fontSize: 32,
                 color: Colors.white,

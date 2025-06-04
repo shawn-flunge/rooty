@@ -8,12 +8,14 @@ import 'package:rooty/src/pages/lesson/presentation/provider/provider.dart';
 
 class LessonPage extends StatelessWidget {
   final String lessonId;
+  final String courseId;
   final Map<String, dynamic> splashMeta;
 
   const LessonPage({
     super.key,
     required this.splashMeta,
-    required this.lessonId
+    required this.lessonId,
+    required this.courseId,
   });
 
   @override
@@ -22,10 +24,10 @@ class LessonPage extends StatelessWidget {
     return PopScope(
       canPop: false,
       child: Consumer(
-          child: LessonSplash(lessonId: lessonId, splashData: splashMeta,),
+          child: LessonSplash(lessonId: lessonId, courseId: courseId, splashData: splashMeta,),
           builder: (c, ref, splash) {
 
-            final state = ref.watch(lessonPageStateNotifierProvider(lessonId));
+            final state = ref.watch(lessonPageStateNotifierProvider(lessonId, courseId));
 
             return (state.isLoading || state.value!.currentStep == -1)
                 ? splash!

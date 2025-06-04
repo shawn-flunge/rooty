@@ -92,9 +92,6 @@ class _CoursePageState extends ConsumerState<CoursePage> {
             isDone: realIndex <= state.value!.progress,
             direction: d,
             onTap: () async => _goTo(i),
-            onLessonFinished: () {
-              ref.read(coursePageStateNotifierProvider(widget.courseId).notifier).finishLesson();
-            },
           );
         }
     );

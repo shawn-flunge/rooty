@@ -174,7 +174,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
               valueListenable: _canPass,
               builder: (c, canPass, _) {
 
-                return RTConfirmButton.big(
+                return RTConfirmButton.medium(
                   text: RootyTexts.of(context).get(widget.content['button'])!.text,
                   backgroundColor: canPass ? Colors.green : Colors.grey,
                   onPressed: () {
