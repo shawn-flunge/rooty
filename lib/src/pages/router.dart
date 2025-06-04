@@ -106,6 +106,7 @@ final rootyRouter = GoRouter(
               name: Routes.courses.name,
               builder: (c, s) {
                 // final courseId = s.pathParameters['courseId']!;
+                /// todo: ㅇㅇ
                 final courseId = '1';
 
                 return CoursePage(
@@ -126,8 +127,11 @@ final rootyRouter = GoRouter(
                     builder: (c, s) {
                       final lesson = s.pathParameters['lessonId']!;
                       final splash = s.extra as Map<String, dynamic>;
+                      /// todo: ㅇㅇ
+                      final courseId = '1';
                       return LessonPage(
                         lessonId: lesson,
+                        courseId: '1',
                         splashMeta: splash,
                       );
                     }

@@ -10,9 +10,10 @@ import 'package:rooty/src/pages/lesson/presentation/provider/provider.dart';
 
 class LessonSplash extends ConsumerStatefulWidget {
   final String lessonId;
+  final String courseId;
   final Map<String, dynamic> splashData;
 
-  const LessonSplash({super.key, required this.lessonId, required this.splashData,});
+  const LessonSplash({super.key, required this.lessonId, required this.courseId, required this.splashData,});
 
   @override
   ConsumerState<LessonSplash> createState() => _LessonSplashState();
@@ -73,7 +74,7 @@ class _LessonSplashState extends ConsumerState<LessonSplash> with SingleTickerPr
                 text: RootyTexts.of(context).get('start')!.text,
                 // backgroundColor: canPass ? Colors.green : Colors.grey,
                 onPressed: () {
-                  ref.read(lessonPageStateNotifierProvider(widget.lessonId).notifier).startLesson();
+                  ref.read(lessonPageStateNotifierProvider(widget.lessonId, widget.courseId).notifier).startLesson();
                 },
               ),
           ),

@@ -40,8 +40,10 @@ class _LessonStepListPageState extends ConsumerState<LessonStepListPage> {
 
     if(index == widget.steps.length-1) {
       final lessonId = GoRouter.of(context).state.pathParameters['lessonId']!;
+      /// todo: ㅇㅇ
+      final courseId = '1';
 
-      ref.read(lessonPageStateNotifierProvider(lessonId).notifier).finishLesson();
+      ref.read(lessonPageStateNotifierProvider(lessonId, courseId).notifier).finishLesson();
       context.pop<bool>(true);
     } else {
 

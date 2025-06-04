@@ -12,7 +12,7 @@ part 'provider.g.dart';
 class LessonPageStateNotifier extends _$LessonPageStateNotifier {
 
   @override
-  Future<LessonPageState> build(String lessonId) async{
+  Future<LessonPageState> build(String lessonId, String courseId) async{
     final stepsById = GetStepsById(StepRepositoryImpl());
     final steps = await stepsById(int.parse(lessonId));
 
