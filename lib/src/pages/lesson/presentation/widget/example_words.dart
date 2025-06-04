@@ -1,5 +1,7 @@
 
+import 'package:design_system/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:rooty/src/core/find_value_from_l10n.dart';
 
 
@@ -78,7 +80,8 @@ class _ExampleWordsViewState extends State<ExampleWordsView> {
           children: [
             IconButton(
               icon: Icon(
-                Icons.chevron_left
+                LucideIcons.chevron_left,
+                color: context.colors.text,
               ),
               onPressed: () => goTo(false),
             ),
@@ -90,15 +93,18 @@ class _ExampleWordsViewState extends State<ExampleWordsView> {
                     textScaler: TextScaler.noScaling,
                     style: TextStyle(
                       fontSize: 20,
-                      // height: 1,
-                      fontWeight: FontWeight.w600
+                      color: context.colors.text,
+                      fontVariations: [
+                        FontVariation.weight(360)
+                      ]
                     ),
                   );
                 }
             ),
             IconButton(
               icon: Icon(
-                  Icons.chevron_right
+                LucideIcons.chevron_right,
+                color: context.colors.text,
               ),
               onPressed: () => goTo(true),
             ),
@@ -137,20 +143,32 @@ class _Content extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 12),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-      color: Colors.grey,
+      decoration: BoxDecoration(
+        color: context.colors.cardBackground,
+        borderRadius: BorderRadius.circular(10)
+      ),
       child: Column(
         children: [
           Text(
             '$sound($character)',
             textScaler: TextScaler.noScaling,
             style: TextStyle(
-                fontSize: 30,
+              fontSize: 30,
+              color: context.colors.text,
+              fontVariations: [
+                FontVariation.weight(360)
+              ]
             ),
           ),
           Text(
             explanation,
+            textScaler: TextScaler.noScaling,
             style: TextStyle(
-                fontSize: 16
+                fontSize: 16,
+                color: context.colors.text,
+                fontVariations: [
+                  FontVariation.weight(320)
+                ]
             ),
           )
         ],

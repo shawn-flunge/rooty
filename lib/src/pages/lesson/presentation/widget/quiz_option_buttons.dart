@@ -1,6 +1,7 @@
 
 
 
+import 'package:design_system/color.dart';
 import 'package:flutter/material.dart';
 import 'package:rooty/src/core/find_value_from_l10n.dart';
 
@@ -50,17 +51,23 @@ class _QuizOptionButtonsState extends State<QuizOptionButtons> {
           },
           child: Container(
             alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(vertical: 6),
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
             margin: const EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
-                color: _selected.contains(i)
-                    ? widget.correctIndex == i ? Colors.green : Colors.grey
-                    : Colors.grey.shade200
+              borderRadius: BorderRadius.circular(10),
+              color: _selected.contains(i)
+                  ? widget.correctIndex == i ? context.colors.primary : context.colors.disabled
+                  : context.colors.lightGrey
             ),
             child: Text(
               widget.bundle.findString(option['text']),
+              textScaler: TextScaler.noScaling,
               style: TextStyle(
-                  fontSize: 24
+                fontSize: 24,
+                color: Colors.black,
+                fontVariations: [
+                  FontVariation.weight(360)
+                ]
               ),
             ),
           ),

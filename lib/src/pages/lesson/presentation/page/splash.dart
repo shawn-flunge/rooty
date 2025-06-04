@@ -1,10 +1,12 @@
 
 
+import 'package:design_system/color.dart';
 import 'package:design_system/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rooty/src/core/find_value_from_l10n.dart';
 import 'package:rooty/src/localizations/texts.dart';
+import 'package:rooty/src/localizations/widget.dart';
 import 'package:rooty/src/pages/lesson/presentation/provider/provider.dart';
 
 
@@ -51,19 +53,27 @@ class _LessonSplashState extends ConsumerState<LessonSplash> with SingleTickerPr
           RTAppBarPlain(backgroundColor: Colors.transparent,),
           const Spacer(),
           _padding(
-            child: Text(
+            child: LocalizedText(
               _localizedString('splash_title'),
               style: TextStyle(
-                  fontSize: 40
+                fontSize: 40,
+                color: context.colors.text,
+                fontVariations: [
+                  FontVariation.weight(400)
+                ]
               ),
             )
           ),
           const SizedBox(height: 32,),
           _padding(
-              child: Text(
+              child: LocalizedText(
                 _localizedString('splash_description'),
                 style: TextStyle(
-                    fontSize: 20
+                  fontSize: 20,
+                  color: context.colors.text,
+                  fontVariations: [
+                    FontVariation.weight(300)
+                  ]
                 ),
               ),
           ),

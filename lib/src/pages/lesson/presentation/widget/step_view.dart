@@ -1,8 +1,6 @@
 
 
-
-import 'dart:io';
-
+import 'package:design_system/color.dart';
 import 'package:design_system/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:rooty/src/core/find_value_from_l10n.dart';
@@ -69,10 +67,17 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
   List<Widget> _unitExpansion(BuildContext context) {
 
     return [
-      Text(
-        _localizedString('title'),
-        style: TextStyle(
-            fontSize: 40
+      Center(
+        child: Text(
+          _localizedString('title'),
+          textScaler: TextScaler.noScaling,
+          style: TextStyle(
+            fontSize: 40,
+            color: context.colors.text,
+            fontVariations: [
+              FontVariation.weight(320)
+            ]
+          ),
         ),
       ),
       const SizedBox(height: 24,),
@@ -81,7 +86,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
         words: widget.content['examples'],
         bundle: widget.bundle,
       ),
-      ..._descriptions(),
+      ..._descriptions(context),
 
     ];
   }
@@ -89,10 +94,17 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
   List<Widget> _quiz(BuildContext context) {
 
     return [
-      Text(
-        _localizedString('question'),
-        style: TextStyle(
-            fontSize: 44
+      Center(
+        child: Text(
+          _localizedString('question'),
+          textScaler: TextScaler.noScaling,
+          style: TextStyle(
+            fontSize: 40,
+            color: context.colors.text,
+            fontVariations: [
+              FontVariation.weight(320)
+            ]
+          ),
         ),
       ),
       const SizedBox(height: 24,),
@@ -113,8 +125,13 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
     return [
       Text(
         _localizedString('question'),
+        textScaler: TextScaler.noScaling,
         style: TextStyle(
-            fontSize: 32
+          fontSize: 32,
+          color: context.colors.text,
+          fontVariations: [
+            FontVariation.weight(320)
+          ]
         ),
       ),
 
@@ -123,27 +140,39 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
 
   List<Widget> _default(BuildContext context) {
     return [
-      Text(
-        _localizedString('title'),
-        style: TextStyle(
-            fontSize: 40
+      Center(
+        child: Text(
+          _localizedString('title'),
+          textScaler: TextScaler.noScaling,
+          style: TextStyle(
+            fontSize: 40,
+            color: context.colors.text,
+            fontVariations: [
+              FontVariation.weight(320)
+            ]
+          ),
         ),
       ),
-      ..._descriptions()
+      ..._descriptions(context)
     ];
   }
 
-  List<Widget> _descriptions() {
+  List<Widget> _descriptions(BuildContext context) {
     return List.generate(content['description'].length, (i) {
       final key = content['description'][i];
 
       // print(bundle.findString(key));
       return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4),
+        padding: const EdgeInsets.symmetric(vertical: 6),
         child: Text(
           bundle.findString(key),
+          textScaler: TextScaler.noScaling,
           style: TextStyle(
-              fontSize: 18
+            fontSize: 18,
+            color: context.colors.text,
+            fontVariations: [
+              FontVariation.weight(320)
+            ]
           ),
         ),
       );
@@ -159,14 +188,8 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Text(
-          //   widget.type.name,
-          //   style: TextStyle(
-          //       fontSize: 20
-          //   ),
-          // ),
-
           ..._getContentByStepType(context),
 
           const Spacer(),
@@ -176,7 +199,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
 
                 return RTConfirmButton.medium(
                   text: RootyTexts.of(context).get(widget.content['button'])!.text,
-                  backgroundColor: canPass ? Colors.green : Colors.grey,
+                  backgroundColor: canPass ? context.colors.primary : context.colors.disabled,
                   onPressed: () {
                     if(_canPass.value) {
                       widget.onPassedStep.call();
