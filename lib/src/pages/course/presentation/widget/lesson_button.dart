@@ -94,7 +94,7 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                     padding: const EdgeInsets.all(16),
                     margin: const EdgeInsets.symmetric(horizontal: 32),
                     decoration: BoxDecoration(
-                      color: context.colors.white,
+                      color: context.colors.modalBackground,
                       borderRadius: BorderRadius.circular(20)
                     ),
                     child: Column(
