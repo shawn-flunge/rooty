@@ -35,17 +35,18 @@ class LessonPageStateNotifier extends _$LessonPageStateNotifier {
     }
   }
 
-  void finishLesson() {
+  void finishLesson() async{
     final id = int.parse(lessonId);
-    ref.read(homePageStateNotifierProvider.notifier).updateProgress(id);
-
-    /// todo: 코스 여러개 생기면 하드코딩 박은거 처리해야함
-    ref.read(coursePageStateNotifierProvider('1').notifier).updateProgress(id);
 
     final setProgress = SetProgress( LessonPageRepositoryImpl() );
 
     /// todo: 첫 레슨이면 어떤 이벤트를 팡팡
-    final isFirst = setProgress((courseId: courseId, progress: id-1));
+    final isFirst = await setProgress((courseId: courseId, progress: id-1));
+
+    ref.read(homePageStateNotifierProvider.notifier).updateProgress(id, isFirst);
+    /// todo: 코스 여러개 생기면 하드코딩 박은거 처리해야함
+    ref.read(coursePageStateNotifierProvider('1').notifier).updateProgress(id);
+
   }
 
 }

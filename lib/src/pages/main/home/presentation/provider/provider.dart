@@ -33,15 +33,26 @@ class HomePageStateNotifier extends _$HomePageStateNotifier {
 
   /// lessonId는 1부터 시작
   /// progress는 0부터 시작
-  void updateProgress(int lessonId) {
+  void updateProgress(int lessonId, [bool isFirst = false]) async{
     // final lastLesson = state.value!.progress + 1;
     final progress = state.value!.progress + 1;
+
+    List<DateTime>? streaks;
+    if(isFirst) {
+      final repository = HomePageRepositoryImpl();
+
+      final getStreaks = GetStreaks( repository );
+      streaks = await getStreaks(NoParam());
+    }
 
     if(lessonId <= progress) {
       return;
     } else {
       state = AsyncData(
-          state.value!.copyWith(progress: max(state.value!.progress, progress))
+          state.value!.copyWith(
+            progress: max(state.value!.progress, progress),
+            streaks: streaks ?? []
+          )
       );
     }
   }
