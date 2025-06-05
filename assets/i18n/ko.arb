@@ -4,10 +4,13 @@
 	"@home_hello": {
 		"description": "Home screen greeting message"
 	},
+	"home": "홈",
+	"learn": "학습",
+	"settings": "설정",
 	"next": "다음",
 	"confirm": "확인",
 	"finish": "종료",
-	"start": "시작",
+	"start": "시작하기",
 	"minutes": "{number}분",
 	"@minutes": {
 		"description": "It takes {number} minutes"
@@ -17,9 +20,14 @@
 	"light_mode": "밝은 모드",
 	"dark_mode": "어두운 모드",
 	"system_mode": "시스템 설정",
+	"version": "버전",
 	"course_1000": "천자문",
 	"@course_1000": {
 		"description": "The thousand characters"
 	},
-	"course_1000_description": "한국어 어휘"
+	"course_1000_category": "한국어 어휘",
+	"@course_1000_category": {
+		"description": "Korean Vocabulary"
+	},
+	"course_1000_description": "천자문을 통해 한자의 소리와 뜻을 익히며, 단어의 뿌리를 이해하고 표현력과 어휘력을 자연스럽게 키워갑니다."
 }

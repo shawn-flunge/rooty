@@ -4,10 +4,13 @@
 	"@home_hello": {
 		"description": "Home screen greeting message"
 	},
-	"next": "next",
-	"confirm": "confirm",
-	"finish": "finish",
-	"start": "start",
+	"home": "Home",
+	"learn": "Learn",
+	"settings": "Settings",
+	"next": "Next",
+	"confirm": "Confirm",
+	"finish": "Finish",
+	"start": "Start",
 	"minutes": "{number}min",
 	"@minutes": {
 		"description": "It takes {number} minutes"
@@ -17,9 +20,14 @@
 	"light_mode": "Light Mode",
 	"dark_mode": "Dark Mode",
 	"system_mode": "System default",
+	"version": "Version",
 	"course_1000": "THOUSAND\nCHARACTERS",
 	"@course_1000": {
 		"description": "The thousand characters"
 	},
-	"course_1000_description": "Korean Voca"
+	"course_1000_category": "Korean Voca",
+	"@course_1000_category": {
+		"description": "Korean Vocabulary"
+	},
+	"course_1000_description": "Learn the sounds and meanings of Chinese characters through the Thousand Character Classic, and grow your vocabulary naturally."
 }
