@@ -57,7 +57,8 @@ class _CoursePageState extends ConsumerState<CoursePage> {
       });
     });
 
-    if(state.isLoading) return Center(child: CircularProgressIndicator(),);
+    // if(state.isLoading) return Center(child: CircularProgressIndicator(),);
+    if(state.isLoading) return Center(child: RTCircularIndicator(),);
 
     final lessons = state.value!.lessons;
 

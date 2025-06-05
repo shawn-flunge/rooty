@@ -1,6 +1,6 @@
 
 import 'package:design_system/layout.dart';
-import 'package:design_system/widget.dart' show RTCalendar;
+import 'package:design_system/widget.dart' show RTCalendar, RTCircularIndicator;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rooty/src/pages/main/home/presentation/provider/provider.dart';
@@ -17,7 +17,7 @@ class HomePage extends ConsumerWidget {
     final state = ref.watch(homePageStateNotifierProvider);
 
     return state.isLoading
-      ? Center( child: CircularProgressIndicator(),)
+      ? Center( child: RTCircularIndicator(),)
       : DefaultLayout(
         children: [
           const SizedBox(height: 32,),
