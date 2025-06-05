@@ -35,7 +35,7 @@ class CourseIntroductionBanner extends StatelessWidget{
           ),
           const SizedBox(height: 8,),
           LocalizedText(
-            '어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고 어쩌고 저쩌고',
+            'course_1000_description',
             style: TextStyle(
                 fontSize: 16,
                 color: context.colors.text2,

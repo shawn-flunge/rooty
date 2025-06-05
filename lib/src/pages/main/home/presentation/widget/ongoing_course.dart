@@ -111,7 +111,7 @@ class _Card extends StatelessWidget {
             textBaseline: TextBaseline.alphabetic,
             children: [
               LocalizedText(
-                'course_1000_description',
+                'course_1000_category',
                 style: TextStyle(
                   fontSize: 24,
                   color: const Color(0xFFE3E3E3),
