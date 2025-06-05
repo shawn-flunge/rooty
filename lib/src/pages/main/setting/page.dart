@@ -27,7 +27,7 @@ class SettingPage extends StatelessWidget {
           builder: (c, ref, _) {
             final setting = ref.watch(appSettingNotifierProvider);
             return RTListTile(
-              title: '버전',
+              title: RootyTexts.of(context).get('version')?.text ?? '',
               trailing: setting.isLoading
               ? const SizedBox()
               : Text(
