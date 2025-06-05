@@ -63,7 +63,7 @@ class _QuizOptionButtonsState extends State<QuizOptionButtons> {
               widget.bundle.findString(option['text']),
               textScaler: TextScaler.noScaling,
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20,
                 color: Colors.black,
                 fontVariations: [
                   FontVariation.weight(360)

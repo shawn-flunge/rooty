@@ -99,7 +99,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
           _localizedString('question'),
           textScaler: TextScaler.noScaling,
           style: TextStyle(
-            fontSize: 40,
+            fontSize: 28,
             color: context.colors.text,
             fontVariations: [
               FontVariation.weight(320)
