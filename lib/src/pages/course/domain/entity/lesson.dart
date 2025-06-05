@@ -12,7 +12,7 @@ abstract class LessonEntity with _$LessonEntity {
     @JsonKey(name: 'course_id') required int courseId,
     required int order,
     @JsonKey(name: 'thumbnail_url') String? thumbnailUrl,
-    required String title,
+    required Map<String, dynamic> title,
     required Map<String, dynamic> description,
     @JsonKey(name: 'splash_meta') required Map<String, dynamic> splashMeta,
     @JsonKey(name: 'is_published') required bool isPublished

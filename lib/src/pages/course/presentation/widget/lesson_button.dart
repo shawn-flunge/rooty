@@ -102,10 +102,24 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         LocalizedText(
+                          widget.lesson.title.byLanguage(),
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: context.colors.text,
+                            fontVariations: [
+                              FontVariation.weight(400)
+                            ]
+                          ),
+                        ),
+                        const SizedBox(height: 8,),
+                        LocalizedText(
                           widget.lesson.description.byLanguage(),
                           style: TextStyle(
-                            fontSize: 20,
-                            color: context.colors.black,
+                            fontSize: 18,
+                            color: context.colors.text,
+                            fontVariations: [
+                              FontVariation.weight(320)
+                            ]
                           ),
                         ),
                         const SizedBox(height: 16,),
@@ -146,7 +160,7 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                   onPressed: _toggleOverlay,
                   child: LocalizedText(
                     // widget.lesson.title,
-                    '鳥官人皇',
+                    widget.lesson.title.byLanguage(),
                     style: TextStyle(
                       color: widget.disabled ? Colors.grey : Colors.white,
                       fontSize: 18,
