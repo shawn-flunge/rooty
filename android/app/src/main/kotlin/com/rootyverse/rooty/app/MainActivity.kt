@@ -1,4 +1,4 @@
-package com.rootyverse.rooty.rooty
+package com.rootyverse.rooty.app
 
 import io.flutter.embedding.android.FlutterActivity
 

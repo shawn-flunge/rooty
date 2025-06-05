@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.rootyverse.rooty.rooty"
+    namespace = "com.rootyverse.rooty.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
