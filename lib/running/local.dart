@@ -14,6 +14,7 @@ void main() async{
   initializeDateFormatting();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+    name: 'local'
   );
 
   await SupabaseOptions.initialize();
