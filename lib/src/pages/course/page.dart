@@ -1,5 +1,6 @@
 
 
+import 'package:design_system/color.dart';
 import 'package:design_system/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -79,7 +80,18 @@ class _CoursePageState extends ConsumerState<CoursePage> {
               height: 264,
               child: lessons.length >= 250
                   ? null
-                  : Center(child: Text('to be continued'),),
+                  : Center(
+                      child: Text(
+                        RootyTexts.of(context).get('to_be_continued')?.text ?? '',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: context.colors.text2,
+                          fontVariations: [
+                            FontVariation.weight(300)
+                          ]
+                        ),
+                      ),
+                  ),
             );
           }
 

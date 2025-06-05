@@ -21,6 +21,8 @@
 	"dark_mode": "어두운 모드",
 	"system_mode": "시스템 설정",
 	"version": "버전",
+	"back": "뒤로가기",
+	"to_be_continued": "한 걸음씩,\n남은 레슨들도 추가될 예정이에요.",
 	"course_1000": "천자문",
 	"@course_1000": {
 		"description": "The thousand characters"

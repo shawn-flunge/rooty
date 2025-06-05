@@ -21,6 +21,8 @@
 	"dark_mode": "Dark Mode",
 	"system_mode": "System default",
 	"version": "Version",
+	"back": "Back",
+	"to_be_continued": "Step by step,\nthe rest is coming.",
 	"course_1000": "THOUSAND\nCHARACTERS",
 	"@course_1000": {
 		"description": "The thousand characters"
