@@ -3,6 +3,7 @@ import 'package:design_system/color.dart';
 import 'package:design_system/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rooty/src/core/find_value_from_l10n.dart';
 import 'package:rooty/src/localizations/texts.dart';
 import 'package:rooty/src/localizations/widget.dart';
 import 'package:rooty/src/pages/course/domain/entity/lesson.dart';
@@ -101,7 +102,7 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         LocalizedText(
-                          widget.lesson.description,
+                          widget.lesson.description.byLanguage(),
                           style: TextStyle(
                             fontSize: 20,
                             color: context.colors.black,

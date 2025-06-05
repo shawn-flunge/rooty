@@ -15,4 +15,9 @@ extension L10nMap on Map<String, dynamic> {
     return localizedString;
   }
 
+  String byLanguage() {
+    final lang = Platform.localeName.split('_').first;
+    return this[lang];
+  }
+
 }
