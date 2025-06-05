@@ -37,9 +37,7 @@ class AppSettingNotifier extends _$AppSettingNotifier {
 
   setTheme(ThemeMode newTheme) {
     state = AsyncData(
-        AppSettingState(
-          themeMode: newTheme
-        )
+        state.value!.copyWith(themeMode: newTheme)
     );
     final repository = AppSettingRepositoryImpl();
     final i = switch(newTheme) {
