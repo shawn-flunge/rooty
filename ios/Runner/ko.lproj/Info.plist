@@ -48,6 +48,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSUserTrackingUsageDescription</key>
-    <string></string>
+	<string>attString</string>
 </dict>
 </plist>
