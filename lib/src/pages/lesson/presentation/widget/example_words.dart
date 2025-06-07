@@ -57,7 +57,7 @@ class _ExampleWordsViewState extends State<ExampleWordsView> {
     return Column(
       children: [
         SizedBox(
-          height: 266,
+          height: 230,
           child: PageView.builder(
             controller: _controller,
             scrollDirection: Axis.horizontal,
@@ -82,6 +82,7 @@ class _ExampleWordsViewState extends State<ExampleWordsView> {
               icon: Icon(
                 LucideIcons.chevron_left,
                 color: context.colors.text,
+                size: 16,
               ),
               onPressed: () => goTo(false),
             ),
@@ -92,7 +93,7 @@ class _ExampleWordsViewState extends State<ExampleWordsView> {
                     '${value+1}',
                     textScaler: TextScaler.noScaling,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
                       color: context.colors.text,
                       fontVariations: [
                         FontVariation.weight(360)
@@ -105,6 +106,7 @@ class _ExampleWordsViewState extends State<ExampleWordsView> {
               icon: Icon(
                 LucideIcons.chevron_right,
                 color: context.colors.text,
+                size: 16,
               ),
               onPressed: () => goTo(true),
             ),
@@ -153,7 +155,7 @@ class _Content extends StatelessWidget {
             '$sound($character)',
             textScaler: TextScaler.noScaling,
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 26,
               color: context.colors.text,
               fontVariations: [
                 FontVariation.weight(360)

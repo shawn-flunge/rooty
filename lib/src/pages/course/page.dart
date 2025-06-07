@@ -37,7 +37,7 @@ class _CoursePageState extends ConsumerState<CoursePage> {
   }
 
   Future<void> _goTo(int index) async{
-    final double to = (132.0 * (index+1) - _controller.position.viewportDimension/2)
+    final double to = (132.0 * (index+1) - _controller.position.viewportDimension/4)
         .clamp(0, _controller.position.maxScrollExtent);
 
     await _controller.animateTo(

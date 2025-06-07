@@ -148,37 +148,34 @@ class _LessonButtonState extends State<LessonButton> with SingleTickerProviderSt
         },
         child: CompositedTransformTarget(
           link: _layerLink,
-          child: GestureDetector(
-            onTap: _toggleOverlay,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Align(
-                alignment: Alignment(widget.direction * 0.25, 0),
-                child: RTPushButton(
-                  isPressed: widget.isDone,
-                  disabled: widget.disabled,
-                  onPressed: _toggleOverlay,
-                  child: LocalizedText(
-                    // widget.lesson.title,
-                    widget.lesson.title.byLanguage(),
-                    style: TextStyle(
-                      color: widget.disabled ? Colors.grey : Colors.white,
-                      fontSize: 18,
-                      fontVariations: [
-                        FontVariation.weight(500)
-                      ],
-                      shadows: widget.disabled
-                        ? null
-                        : [
-                          Shadow(
-                            color: Color(0x3C000000),
-                            offset: Offset(1, 1),
-                            blurRadius: 4
-                          )
-                        ]
-                    ),
-                    // textScaler: TextScaler.noScaling,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Align(
+              alignment: Alignment(widget.direction * 0.25, 0),
+              child: RTPushButton(
+                isPressed: widget.isDone,
+                disabled: widget.disabled,
+                onPressed: _toggleOverlay,
+                child: LocalizedText(
+                  // widget.lesson.title,
+                  widget.lesson.title.byLanguage(),
+                  style: TextStyle(
+                    color: widget.disabled ? Colors.grey : Colors.white,
+                    fontSize: 18,
+                    fontVariations: [
+                      FontVariation.weight(500)
+                    ],
+                    shadows: widget.disabled
+                      ? null
+                      : [
+                        Shadow(
+                          color: Color(0x3C000000),
+                          offset: Offset(1, 1),
+                          blurRadius: 4
+                        )
+                      ]
                   ),
+                  // textScaler: TextScaler.noScaling,
                 ),
               ),
             ),

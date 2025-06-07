@@ -72,7 +72,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
           _localizedString('title'),
           textScaler: TextScaler.noScaling,
           style: TextStyle(
-            fontSize: 40,
+            fontSize: 32,
             color: context.colors.text,
             fontVariations: [
               FontVariation.weight(320)
@@ -145,7 +145,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
           _localizedString('title'),
           textScaler: TextScaler.noScaling,
           style: TextStyle(
-            fontSize: 40,
+            fontSize: 32,
             color: context.colors.text,
             fontVariations: [
               FontVariation.weight(320)
@@ -208,7 +208,7 @@ class _StepViewState extends State<StepView> with AutomaticKeepAliveClientMixin<
                 );
               }
           ),
-          const SizedBox(height: 40,)
+          const SizedBox(height: 20,)
         ],
       ),
     );
