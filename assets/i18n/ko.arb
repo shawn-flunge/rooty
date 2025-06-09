@@ -23,6 +23,10 @@
 	"version": "버전",
 	"back": "뒤로가기",
 	"to_be_continued": "한 걸음씩,\n남은 레슨들도 추가될 예정이에요.",
+	"lesson_exit_modal_title": "종료하기",
+	"lesson_exit_modal_description": "현재 레슨을 종료하면 지금까지의 진행 내용은 저장되지 않습니다. ",
+	"lesson_exit_modal_continue": "마저하기",
+	"exit": "종료하기",
 	"course_1000": "천자문",
 	"@course_1000": {
 		"description": "The thousand characters"

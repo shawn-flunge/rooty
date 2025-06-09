@@ -23,6 +23,10 @@
 	"version": "Version",
 	"back": "Back",
 	"to_be_continued": "Step by step,\nthe rest is coming.",
+	"lesson_exit_modal_title": "Exit Lesson",
+	"lesson_exit_modal_description": "If you exit now, your progress in this lesson won’t be saved.",
+	"lesson_exit_modal_continue": "Continue",
+	"exit": "Exit",
 	"course_1000": "THOUSAND\nCHARACTERS",
 	"@course_1000": {
 		"description": "The thousand characters"
